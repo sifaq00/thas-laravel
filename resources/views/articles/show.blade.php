@@ -46,7 +46,16 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/rs-spacing.css') }}">
 
         <!-- For Vite generated assets -->
-        @vite(['resources/css/app.css'])
+        @if (app()->environment('production'))
+    @php
+        $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);
+    @endphp
+    <link rel="stylesheet" href="{{ asset('build/' . $manifest['resources/css/app.css']['file']) }}">
+    <script type="module" src="{{ asset('build/' . $manifest['resources/js/app.js']['file']) }}"></script>
+@else
+    @viteReactRefresh
+    @vite(['resources/js/app.js', 'resources/css/app.css'])
+@endif
 
         <!-- responsive css -->
         <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}">
@@ -91,7 +100,7 @@
                                 <ul class="topbar-right">
                                     <li class="login-register"></li>
                                     <li class="btn-part">
-                                        <a class="apply-btn" href="https://wa.me/628112535100" target="_blank">Daftar Sekarang!</a>
+                                        <a class="apply-btn" href="https://wa.me/682223243036" target="_blank">Daftar Sekarang!</a>
                                     </li>
                                 </ul>
                             </div>
@@ -107,10 +116,10 @@
                             <div class="col-lg-5">
                                 <div class="logo-cat-wrap">
                                     <div class="logo-part pr-90">
-                                        <a class="dark-logo" href="{{ route('index') }}">
+                                        <a class="dark-logo" href="{{ route('landingpage') }}">
                                             <img src="{{ asset('images/thas/menu.png') }}" alt="">
                                         </a>
-                                        <a class="light-logo" href="{{ route('index') }}">
+                                        <a class="light-logo" href="{{ route('landingpage') }}">
                                             <img src="{{ asset('images/thas/white.png') }}" alt="">
                                         </a>
                                     </div>
@@ -126,7 +135,7 @@
                                         </div>
                                         <nav class="rs-menu">
                                            <ul class="nav-menu">
-                                              <li class="rs-mega-menu mega-rs current-menu-item"> <a href="#">Home</a>
+                                              <li class="rs-mega-menu mega-rs"> <a href="landingpage{{ route('landingpage') }}">Home</a>
                                               </li>
                                                <li class="menu">
                                                    <a href="{{ route('about') }}">About</a>
@@ -141,7 +150,7 @@
                                                    </ul>
                                                </li>
 
-                                               <li class="menu">
+                                               <li class="current-menu-item">
                                                    <a href="#">Info & Berita</a>
                                                </li>
 
@@ -230,7 +239,7 @@
                     <h4 class="fw-bold mb-3 border-bottom pb-2">Informasi Pendaftaran</h4>
                     <div class="card info-card mb-3">
                     <img
-                        src="{{ asset('images/poster/posterpendaftaran1.jpg') }}"
+                        src="{{ asset('images/poster/pendaftaran-new.PNG') }}"
                         class="card-img-top"
                         alt="Poster Pendaftaran"
                     />
@@ -262,11 +271,12 @@
                                         <!-- Carousel Gambar -->
                                         <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
                                             <div class="carousel-inner">
-                                                <!-- Gambar Pertama -->
                                                 <div class="carousel-item active">
+                                                    <img src="{{ asset('images/poster/pendaftaran-new.PNG') }}" class="d-block w-100" alt="Poster Pendaftaran New">
+                                                </div>
+                                                <div class="carousel-item">
                                                     <img src="{{ asset('images/poster/posterpendaftaran1.jpg') }}" class="d-block w-100" alt="Poster Pendaftaran 1">
                                                 </div>
-                                                <!-- Gambar Kedua -->
                                                 <div class="carousel-item">
                                                     <img src="{{ asset('images/poster/posterpendaftaran2.jpg') }}" class="d-block w-100" alt="Poster Pendaftaran 2">
                                                 </div>
@@ -357,7 +367,7 @@
                     <div class="row y-middle">
                         <div class="col-lg-4 md-mb-20">
                             <div class="footer-logo md-text-center">
-                                <a href="index.html"><img src="assets/images/thas/white.png" alt=""></a>
+                                <a href="index.html"><img src"{{ asset('images/thas/white.png') }}" alt=""></a>
                             </div>
                         </div>
                         <div class="col-lg-4 md-mb-20">
@@ -448,7 +458,16 @@
 		<!-- contact form js -->
 		<script src="{{ asset('js/contact.form.js') }}"></script>
 		<!-- app js -->
-        @vite('resources/js/app.js')
+        @if (app()->environment('production'))
+    @php
+        $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);
+    @endphp
+    <link rel="stylesheet" href="{{ asset('build/' . $manifest['resources/css/app.css']['file']) }}">
+    <script type="module" src="{{ asset('build/' . $manifest['resources/js/app.js']['file']) }}"></script>
+@else
+    @viteReactRefresh
+    @vite(['resources/js/app.js', 'resources/css/app.css'])
+@endif
 
     </body>
 </html>

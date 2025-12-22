@@ -76,12 +76,11 @@ INDEX.BLADE.PHP - Tentang Kami
 }
 
 .gambar-wrapper img {
-    width: 120%;
-    max-width: 500px;
+    width: 100%; /* Mengubah menjadi 100% untuk responsivitas */
+    max-width: 500px; /* Tetap menjaga batas maksimum */
     border-radius: 10px;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
     margin-bottom: 50px;
-    margin-left: -50px;
 }
 
 .bagian-teks {
@@ -92,8 +91,8 @@ INDEX.BLADE.PHP - Tentang Kami
     font-size: 1.2rem;
     color: #ff5722;
     margin-bottom: 10px;
-    
 }
+
 .bagian-teks .judul-seksi {
     font-size: 2.5rem;
     color: #112958;
@@ -109,6 +108,7 @@ INDEX.BLADE.PHP - Tentang Kami
 
 .wrapper-tombol {
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .tombol-utama {
@@ -119,6 +119,7 @@ INDEX.BLADE.PHP - Tentang Kami
     text-transform: uppercase;
     font-weight: bold;
     transition: background-color 0.3s ease;
+    margin-bottom: 20px;
 }
 
 .tombol-utama:hover {
@@ -127,9 +128,9 @@ INDEX.BLADE.PHP - Tentang Kami
 }
 
 /* Responsif */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
     .bagian-gambar {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
 
     .bagian-teks {
@@ -144,8 +145,149 @@ INDEX.BLADE.PHP - Tentang Kami
     .bagian-teks .deskripsi-seksi {
         font-size: 0.9rem;
     }
+
 }
 
+@media (max-width: 768px) {
+    .bagian-gambar {
+        margin-bottom: 10px;
+    }
+
+    .bagian-teks .judul-seksi {
+        font-size: 1.8rem; /* Ukuran lebih kecil untuk mobile */
+    }
+
+    .bagian-teks .deskripsi-seksi {
+        font-size: 0.85rem; /* Ukuran lebih kecil untuk mobile */
+    }
+
+    .gambar-wrapper img {
+        margin-left: 0; /* Menghilangkan margin kiri pada mobile */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.about-section-homepage {
+    padding-top: 100px; /* Padding atas untuk desktop */
+    padding-bottom: 200px; /* Padding bawah untuk desktop */
+}
+
+.about-image-homepage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.about-image-homepage img {
+    width: 100%; /* Mengatur gambar agar responsif */
+    max-width: 600px; /* Batas maksimum lebar gambar */
+    border-radius: 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.video-popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 2rem; /* Ukuran ikon video */
+    background-color: rgba(255, 87, 34, 0.7); /* Warna latar belakang semi-transparan */
+    border-radius: 50%;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.video-popup:hover {
+    background-color: rgba(255, 87, 34, 1); /* Mengubah warna saat hover */
+}
+
+.section-title-homepage {
+    padding-left: 65px; /* Padding untuk desktop */
+}
+
+.section-title-homepage .sub-title-homepage {
+    font-size: 1.2rem;
+    color: #ff5722;
+    margin-bottom: 10px;
+}
+
+.section-title-homepage .title-about-homepage {
+    font-size: 2.5rem;
+    color: #112958;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.section-title-homepage .description-homepage {
+    font-size: 1rem;
+    color: #4a4a4a;
+    line-height: 1.8;
+    padding-right: 50px; /* Padding untuk desktop */
+}
+
+/* Responsif */
+@media (max-width: 992px) {
+    .about-section-homepage {
+        padding-bottom: 100px; /* Mengurangi padding bawah untuk tablet */
+    }
+
+    .section-title-homepage {
+        padding-left: 15px; /* Mengurangi padding untuk tablet */
+    }
+
+    .section-title-homepage .title-about-homepage {
+        font-size: 2rem; /* Ukuran font lebih kecil untuk tablet */
+    }
+
+    .section-title-homepage .description-homepage {
+        font-size: 0.9rem; /* Ukuran font lebih kecil untuk tablet */
+        padding-right: 15px; /* Mengurangi padding untuk tablet */
+    }
+}
+
+@media (max-width: 768px) {
+    .about-section-homepage {
+        padding-top: 70px; /* Mengurangi padding atas untuk mobile */
+        padding-bottom: 70px; /* Mengurangi padding bawah untuk mobile */
+    }
+
+    .about-image-homepage {
+        margin-bottom: 20px; /* Menambahkan margin bawah untuk gambar di mobile */
+    }
+
+    .section-title-homepage {
+        padding-left: 0; /* Menghilangkan padding kiri untuk mobile */
+        text-align: center; /* Menyelaraskan teks ke tengah untuk mobile */
+    }
+
+    .section-title-homepage .title-about-homepage {
+        font-size: 1.8rem; /* Ukuran font lebih kecil untuk mobile */
+    }
+
+    .section-title-homepage .description-homepage {
+        font-size: 0.85rem; /* Ukuran font lebih kecil untuk mobile */
+        padding-right: 0; /* Menghilangkan padding kanan untuk mobile */
+    }
+
+    .video-popup {
+        font-size: 1.5rem; /* Ukuran ikon video lebih kecil untuk mobile */
+        padding: 8px; /* Mengurangi padding untuk ikon video */
+    }
+}
 
 
 /*----------------------------
@@ -242,7 +384,9 @@ INDEX.BLADE.PHP - Tentang Kami
 .kemitraan-card .card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: none;
-  background-color: #ff5722;
+  border-radius: 15px;
+  background-image: url('/public/images/bg/home7/bg.png');
+  background-color:#112958;
   margin-bottom: 1.5rem;
   justify-content: center;
     align-items: center;
@@ -269,97 +413,128 @@ INDEX.BLADE.PHP - Tentang Kami
 /*----------------------------
     Perhotelan - Kurikulum
     ------------------------------ */
-#curriculum-learning-section {
-  background-color: #f9f9f9;
-  padding: 50px 0;
-}
-
-.section-container {
-  max-width: 1200px;
-  margin: auto;
-}
-
-.textual-content-center {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.flexible-content-row {
-  display: flex;
-  justify-content: space-between;
-}
-
-.card-column {
-  width: 48%;
-}
-
-.curriculum-details-card,
-.learning-method-card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 12px;
-  padding: 20px;
-  background: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px;
-  color: #333;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card-information-content {
-  position: relative;
-  z-index: 1;
-}
-
-.section-introduction-title {
-  font-size: 2.3rem;
-  font-family: 'Nunito', sans-serif;
-  color: #ff5722;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.section-subtitle {
-  font-size: 1.8rem;
-  color: #112958;
-  font-weight: 700;
-  text-align: center;
-}
-
-.curriculum-information-list,
-.learning-details-list {
-  list-style: none;
-  padding: 0;
-  margin: 10px 0;
-}
-
-.curriculum-information-list li,
-.learning-details-list li {
-  padding: 10px;
-  font-size: 1rem;
-  border-left: 3px solid #ff5722;
-  margin-bottom: 10px;
-  background-color: #f5f5f5;
-  border-radius: 4px;
-}
-
-.curriculum-details-card:hover,
-.learning-method-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-@media (max-width: 768px) {
-  .card-column {
-      width: 100%;
-      margin-bottom: 20px;
-  }
-
-  .section-introduction-title {
-      font-size: 1.5rem;
-  }
-}
+    #curriculum-learning-section {
+        background-color: #f9f9f9;
+        padding: 50px 0;
+      }
+      
+      .section-container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 0 15px; /* Tambahkan padding untuk jarak di layar kecil */
+      }
+      
+      .textual-content-center {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      
+      .flexible-content-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px; /* Tambahkan jarak antar elemen */
+        flex-wrap: wrap; /* Agar elemen turun ke bawah jika tidak muat */
+      }
+      
+      .card-column {
+        width: calc(50% - 10px); /* Atur ulang agar muat dalam satu baris */
+      }
+      
+      .curriculum-details-card,
+      .learning-method-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        padding: 20px;
+        background: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+        color: #333;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      
+      .card-information-content {
+        position: relative;
+        z-index: 1;
+      }
+      
+      .section-introduction-title {
+        font-size: 2.3rem;
+        font-family: 'Nunito', sans-serif;
+        color: #ff5722;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      
+      .section-subtitle {
+        font-size: 1.8rem;
+        color: #112958;
+        font-weight: 700;
+        text-align: center;
+      }
+      
+      .curriculum-information-list,
+      .learning-details-list {
+        list-style: none;
+        padding: 0;
+        margin: 10px 0;
+      }
+      
+      .curriculum-information-list li,
+      .learning-details-list li {
+        padding: 10px;
+        font-size: 1rem;
+        border-left: 3px solid #ff5722;
+        margin-bottom: 10px;
+        background-color: #f5f5f5;
+        border-radius: 4px;
+      }
+      
+      .curriculum-details-card:hover,
+      .learning-method-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+      
+      /* Tambahkan Media Query untuk Responsif */
+      @media (max-width: 768px) {
+        .card-column {
+            width: 100%; /* Elemen memenuhi lebar penuh */
+            margin-bottom: 20px;
+        }
+      
+        .section-introduction-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+      
+        .section-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            margin-top: 20px;;
+        }
+      
+        .curriculum-information-list li,
+        .learning-details-list li {
+            font-size: 0.9rem; /* Sesuaikan ukuran teks untuk layar kecil */
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .section-introduction-title {
+            font-size: 1.5rem;
+        }
+      
+        .section-subtitle {
+            font-size: 1.2rem;
+        }
+      
+        .card-column {
+            padding: 0 10px;
+        }
+      }
+      
 
 /*-----------------------------------
     Perhotelan - Program Keistimewaan
@@ -418,7 +593,10 @@ INDEX.BLADE.PHP - Tentang Kami
 
 .program-activities li {
   padding: 10px 0;
-  line-height: 0.5;
+  line-height: 1.3;
+  word-wrap: break-word; /* Memastikan kata-kata panjang dibagi */
+  word-break: break-word; /* Untuk pemotongan kata jika terlalu panjang */
+  white-space: normal; 
 }
 
 .card-img {
@@ -742,16 +920,23 @@ INDEX.BLADE.PHP - Tentang Kami
 }
 
 @media (max-width: 768px) {
-  .art-course-title {
-      font-size: 2.2rem;
-  }
 
+    .art-course-container {
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+    
+  .art-course-title {
+      font-size: 2rem;
+      line-height: 1.3;
+  }
   .art-course-quote {
-      font-size: 1.1rem;
+      font-size: 1rem;
   }
 
   .art-course-content {
       font-size: 1rem;
+      text-align: justify;
   }
 
   .art-course-benefits li {
@@ -909,6 +1094,21 @@ INDEX.BLADE.PHP - Tentang Kami
 @media (max-width: 768px) {
   .edu-title {
     font-size: 1.5rem;
+  }
+  .cooking-header p {
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 1rem;
+  }
+
+  .cooking-header h1 {
+    font-size: 1.8rem;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .cooking-header {
+    padding: 60px 0;
   }
 }
 
@@ -1079,7 +1279,7 @@ INDEX.BLADE.PHP - Tentang Kami
     max-width: 600px;
     display: flex;
     border: 1px solid #dde1;
-    border-radius: 50px;  
+    border-radius: 50px;
     overflow: hidden;
 }
 
@@ -1088,7 +1288,7 @@ INDEX.BLADE.PHP - Tentang Kami
     padding: 9px 18px;
     width: 100%;
     font-size: 16px;
-    border-radius: 50px;  
+    border-radius: 50px;
     outline: none;
 }
 
@@ -1124,12 +1324,12 @@ INDEX.BLADE.PHP - Tentang Kami
 
 @media (max-width: 768px) {
     .search-box {
-        max-width: 90%; 
+        max-width: 90%;
     }
 
     .search-button {
         padding: 6px 12px;
-        font-size: 14px; 
+        font-size: 14px;
     }
 }
 
@@ -1158,12 +1358,12 @@ INDEX.BLADE.PHP - Tentang Kami
   }
 .card-body {
     display: flex;
-    flex-direction: column; 
-    justify-content: space-between; 
-    height: 100%; 
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
 }
 .read-more {
-    margin-top: auto; 
+    margin-top: auto;
     background-color: #ff5722;
     border: none;
     color: white;
@@ -1289,39 +1489,39 @@ INDEX.BLADE.PHP - Tentang Kami
 .carousel-control-prev, .carousel-control-next {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%); 
-    background-color: rgba(0, 0, 0, 0.5); 
-    width: 50px; 
-    height: 50px; 
-    border-radius: 50%; 
-    z-index: 10; 
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    z-index: 10;
 }
 
 .carousel-control-prev {
-    left: 10px; 
+    left: 10px;
 }
 
 .carousel-control-next {
-    right: 10px; 
+    right: 10px;
 }
 
 .carousel-control-prev-icon, .carousel-control-next-icon {
-    background-color: rgba(0, 0, 0, 0.8); 
-    border-radius: 50%; 
-    width: 40px; 
-    height: 40px; 
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
 }
 
 .carousel-control-prev-icon:hover, .carousel-control-next-icon:hover {
-    background-color: #ff5722; 
-    opacity: 0.8; 
+    background-color: #ff5722;
+    opacity: 0.8;
 }
 
 .carousel-control-prev, .carousel-control-next {
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 50%;
-    width: 50px; 
-    height: 50px; 
+    width: 50px;
+    height: 50px;
 }
 
 
@@ -1435,7 +1635,10 @@ INDEX.BLADE.PHP - Tentang Kami
     background: #0056b3;
   }
 
-  
+
+
+
+
 
 
 
@@ -1603,31 +1806,31 @@ ul {
   background-repeat: no-repeat;
 }
 .bg1 {
-  background: url(assets/images/bg/bg1.png);
+  background: url('/public/images/bg/bg1.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 .bg2 {
-  background: url(assets/images/bg/bg2.jpg);
+  background: url('/public/images/bg/bg2.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 .bg3 {
-  background: url(assets/images/bg/bg3.png);
+  background: url('/public/images/bg/bg3.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;
 }
 .bg4 {
-  background: url(assets/images/bg/home6/bg.png);
+  background: url('/public/images/bg/home6/bg.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 .bg5 {
-  background: url(assets/images/bg/home7/bg.png);
+  background: url('/public/images/bg/home7/bg.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -1640,50 +1843,46 @@ ul {
   background-position: center center;
 }
 .bg7 {
-  background: url(assets/images/bg/home8-bg2.jpg);
+  background: url('/public/images/bg/home8-bg2.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 .bg8 {
-  background: url(assets/images/bg/home12/dotted.png);
+  background: url('/public/images/bg/home12/dotted.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   padding: 50px 0 50px;
 }
 .bg9 {
-  background: url(assets/images/bg/home13/counter-bg.jpg);
+  background: url('/public/images/bg/home13/counter-bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 }
 .bg10 {
-  background: url(assets/images/bg/home13/logo-bg.jpg);
+  background: url('/public/images/bg/home13/logo-bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 }
 .bg11 {
-  background: url(assets/images/bg/home13/subscribe-bg.jpg);
+  background: url('/public/images/bg/home13/subscribe-bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 }
-.bg12 {
-  background: url(assets/images/bg/home13/footer-bg.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
+
 .bg13 {
-  background: url(assets/images/bg/video-text-bg15.jpg);
+  background: url('/public/images/bg/video-text-bg15.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   padding: 140px 60px 140px 60px;
 }
 .course-shape-bg {
-  background: url(assets/images/bg/course-shape-bg.jpg);
+  background: url('/public/images/bg/course-shape-bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -2406,7 +2605,7 @@ blockquote p {
   background: #1c335f;
 }
 .rs-video-home9 {
-  background: url(assets/images/video/video2.jpg);
+  background: url('/public/images/video/video2.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -2416,7 +2615,7 @@ blockquote p {
   display: block;
 }
 .rs-video .video-item {
-  background: url(assets/images/bg/video-bg-15.jpg);
+  background: url('/public/images/bg/video-bg-15.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   padding: 299px 0 299px 0;
@@ -5390,7 +5589,7 @@ body .modal-backdrop {
 ---------------------------------------*/
 .rs-banner.style1 {
   padding: 125px 0 425px;
-  background: url(assets/images/banner/home1.jpg);
+  background: url('/public/images/banner/home1.jpg');
   background-size: cover;
   background-position: center;
 }
@@ -5407,7 +5606,7 @@ body .modal-backdrop {
   line-height: 30px;
 }
 .rs-banner.style3 {
-  background: url(assets/images/banner/home3.jpg);
+  background: url('/public/images/banner/home3.jpg');
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -5440,7 +5639,7 @@ body .modal-backdrop {
   transform: translateY(-50%);
 }
 .rs-banner.style4 {
-  background: url(assets/images/banner/home4.jpg);
+  background: url('/public/images/banner/home4.jpg');
   background-size: cover;
   background-position: center;
   min-height: 935px;
@@ -5498,7 +5697,7 @@ body .modal-backdrop {
   right: 0;
 }
 .rs-banner.style6 {
-  background: url(assets/images/banner/home6/bg.png);
+  background: url('/public/images/banner/home6/bg.png');
   background-size: cover;
   background-position: center;
   margin-bottom: 54px;
@@ -5582,7 +5781,7 @@ body .modal-backdrop {
   right: 15px;
 }
 .rs-banner.style7 {
-  background: url(assets/images/banner/home7/banner-bg.jpg);
+  background: url('/public/images/banner/home7/banner-bg.jpg');
   background-size: cover;
   background-position: center;
   position: relative;
@@ -5622,7 +5821,7 @@ body .modal-backdrop {
   bottom: 88px;
 }
 .rs-banner.style8 {
-  background: url(assets/images/banner/home9.jpg);
+  background: url('/public/images/banner/home9.jpg');
   background-size: cover;
   background-position: center;
   display: grid;
@@ -5648,7 +5847,7 @@ body .modal-backdrop {
   margin-bottom: 45px;
 }
 .rs-banner.style9 {
-  background: url(assets/images/banner/home11/banner.jpg);
+  background: url('/public/images/banner/home11/banner.jpg');
   background-size: cover;
   display: grid;
   align-items: center;
@@ -5714,7 +5913,7 @@ body .modal-backdrop {
   font-size: 20px;
 }
 .rs-banner.style10 {
-  background: url(assets/images/banner/home12/banner-home12.jpg);
+  background: url('/public/images/banner/home12/banner-home12.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   display: grid;
@@ -5765,7 +5964,7 @@ body .modal-backdrop {
   width: 600px;
 }
 .rs-banner.style11 {
-  background: url(assets/images/banner/home13/banner.jpg);
+  background: url('/public/images/banner/home13/banner.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -5818,7 +6017,7 @@ body .modal-backdrop {
 }
 .rs-banner.style12 {
   background-color: #F9F7F8;
-  background-image: url(assets/images/banner/home14/border.png);
+  background-image: url('/public/images/banner/home14/border.png');
   background-position: bottom left;
   background-repeat: no-repeat;
   padding: 100px 0px 100px 0px;
@@ -5879,7 +6078,7 @@ body .modal-backdrop {
   width: 620px;
 }
 .rs-banner.style13 {
-  background-image: url(assets/images/banner/home15/banner-1.jpg);
+  background-image: url('/public/images/banner/home15/banner-1.jpg');
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -6046,13 +6245,13 @@ body .modal-backdrop {
   margin-left: -5px;
 }
 .rs-slider.style1 .slider-content.slide1 {
-  background: url(assets/images/slider/h2-1.jpg);
+  background: url('/public/images/slider/h2-1.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 .rs-slider.style1 .slider-content.slide2 {
-  background: url(assets/images/slider/h2-2.jpg);
+  background: url('/public/images/slider/h2-2.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -6201,13 +6400,13 @@ body .modal-backdrop {
   margin-bottom: 65px;
 }
 .rs-slider.main-home .slider-content.slide1 {
-  background: url(assets/images/slider/main-home/1.jpg);
+  background: url('/public/images/slider/main-home/1.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 .rs-slider.main-home .slider-content.slide2 {
-  background: url(assets/images/slider/main-home/2.jpg);
+  background: url('/public/images/slider/main-home/2.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -6347,7 +6546,7 @@ body .modal-backdrop {
   z-index: -1;
 }
 .breadcrumbs1 {
-  background-image: url(assets/images/breadcrumbs/1.jpg);
+  background-image: url('/public/images/breadcrumbs/1.jpg');
   background-size: cover;
   background-position: center;
   background-position: center top;
@@ -6538,7 +6737,7 @@ body .modal-backdrop {
 }
 .rs-about.style2 .about-intro {
   border-radius: 3px;
-  background: url(assets/images/bg/about-intro-bg.jpg);
+  background: url('/public/images/bg/about-intro-bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   padding: 88px 50px 95px;
@@ -6676,7 +6875,7 @@ body .modal-backdrop {
   float: left;
 }
 .rs-about.style5 {
-  background-image: url(assets/images/bg/about-bg.jpg);
+  background-image: url('/public/images/bg/about-bg.jpg');
   background-size: cover;
   background-position: center;
 }
@@ -6776,6 +6975,7 @@ body .modal-backdrop {
   line-height: 28px;
   font-weight: 400;
   color: #505050;
+  text-align: justify;
 }
 .rs-about.video-style {
   position: relative;
@@ -6796,7 +6996,7 @@ body .modal-backdrop {
   margin-top: -70px;
 }
 .rs-about.video-img {
-  background: url(assets/images/video/bg.png);
+  background: url('/public/images/video/bg.png');
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
@@ -6868,6 +7068,67 @@ body .modal-backdrop {
   top: 19%;
   left: 23%;
 }
+
+
+
+
+
+
+
+
+
+
+
+/* General Styles for Mobile */
+@media only screen and (max-width: 768px) {
+    /* Container Spacing */
+    .rs-about.style9 .content-part {
+      padding: 30px 15px;
+    }
+  
+    /* Adjust Image Position */
+    .rs-about.style9 .content-part .about-img {
+      position: relative;
+      left: 0;
+      top: 0;
+      margin-bottom: 20px;
+      text-align: center; /* Center the image */
+    }
+  
+    /* Video Icon Centering */
+    .rs-about.style9 .content-part .about-img .media-icon {
+      display: inline-block;
+      margin: auto;
+    }
+  
+    /* Title & Description Spacing */
+    .rs-about.style9 .content .sub-title {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  
+    .rs-about.style9 .content .sl-title {
+      font-size: 28px;
+      line-height: 35px;
+      text-align: center;
+    }
+  
+    .rs-about.style9 .content .desc {
+      font-size: 16px;
+      line-height: 24px;
+      text-align: justify; /* Better readability on small screens */
+    }
+  
+    /* Reduce Padding Around Sections */
+    .rs-about.style9.pt-100 {
+      padding-top: 50px;
+    }
+  
+    .rs-about.style9.pb-200 {
+      padding-bottom: 50px;
+    }
+  }
+  
 /* ------------------------------------
     08. Services Section CSS
 ---------------------------------------*/
@@ -7081,7 +7342,7 @@ body .modal-backdrop {
   margin: 0;
 }
 .rs-services.home12-style {
-  background: url(assets/images/bg/home12/services-bg.jpg);
+  background: url('/public/images/bg/home12/services-bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -7371,7 +7632,7 @@ body .modal-backdrop {
   background-position: center;
 }
 .rs-categories.home11-style .img-part {
-  background: url(assets/images/categories/home11/1.jpg);
+  background: url('/public/images/categories/home11/1.jpg');
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -8642,7 +8903,7 @@ body .modal-backdrop {
 .free-course-contact {
   margin: 0px;
   padding: 40px 50px 50px;
-  background: url(assets/images/bg/course-contact-bg.jpg);
+  background: url('/public/images/bg/course-contact-bg.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -9667,7 +9928,7 @@ body .modal-backdrop {
   opacity: 0.7;
 }
 .why-choose-us.style3 {
-  background: url(assets/images/bg/home12/why-learn-bg.jpg);
+  background: url('/public/images/bg/home12/why-learn-bg.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -10393,7 +10654,7 @@ body .modal-backdrop {
 }
 .rs-testimonial.style3 .testi-item {
   background-color: #f3f8f9;
-  background-image: url(assets/images/testimonial/cloud-pattern.png);
+  background-image: url('/public/images/testimonial/cloud-pattern.png');
   background-repeat: no-repeat;
   background-size: 130%;
   background-position: 0 70px;
@@ -10503,7 +10764,7 @@ body .modal-backdrop {
   margin: -10px;
 }
 .rs-testimonial.style5 {
-  background: url(assets/images/bg/testi-bg.jpg);
+  background: url('/public/images/bg/testi-bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -10672,7 +10933,7 @@ body .modal-backdrop {
   margin: -10px;
 }
 .rs-testimonial.main-home {
-  background: url(assets/images/bg/main-home.jpg);
+  background: url('/public/images/bg/main-home.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -10928,7 +11189,7 @@ body .modal-backdrop {
   background: #ff5421 !important;
 }
 .rs-testimonial.home12-style {
-  background: url(assets/images/bg/home12/testi-bg.jpg);
+  background: url('/public/images/bg/home12/testi-bg.jpg');
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
@@ -12480,7 +12741,7 @@ body .modal-backdrop {
   background: red;
 }
 .rs-event.home12style {
-  background: url(assets/images/bg/home12/event-bg.jpg);
+  background: url('/public/images/bg/home12/event-bg.jpg');
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
@@ -12646,10 +12907,10 @@ body .modal-backdrop {
     height: 100%; /* Memastikan setiap card memiliki tinggi penuh */
   }
 .rs-event.home8-style1 .rs-carousel .event-item .event-short .featured-img img {
-    width: 100%; 
-    height: 220px; 
-    object-fit: cover; 
-    border-radius: 10px; 
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
 .rs-event.home8-style1 .event-item .event-short .featured-img .dates {
@@ -12684,7 +12945,7 @@ body .modal-backdrop {
 .rs-event.home8-style1 .event-item .event-short .content-part .time-sec .timesec i:before {
   color: #ff5421;
   font-size: 14px;
-  
+
 }
 .rs-event.home8-style1 .event-item .event-short .content-part .time-sec .address {
   font-size: 14px;
@@ -12986,7 +13247,7 @@ body .modal-backdrop {
   transform: translate(-50%, -50%);
 }
 .rs-cta.style1 {
-  background: url(assets/images/bg/pattern1.png);
+  background: url('/public/images/bg/pattern1.png');
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: bottom;
@@ -13078,7 +13339,7 @@ body .modal-backdrop {
 }
 
 .rs-cta.style2 .partition-bg-wrap:before {
-  background: url(assets/images/cta/style2/left-bg.jpg);
+  background: url('/public/images/cta/style2/left-bg.jpg');
   left: 0;
   background-size: cover;
   background-repeat: no-repeat;
@@ -13086,7 +13347,7 @@ body .modal-backdrop {
 }
 
 .rs-cta.style2 .partition-bg-wrap:after {
-  background: url(assets/images/cta/style2/right-bg.jpg);
+  background: url('/public/images/cta/style2/right-bg.jpg');
   right: 0;
   background-size: cover;
   background-repeat: no-repeat;
@@ -13094,11 +13355,11 @@ body .modal-backdrop {
 }
 
 .rs-cta.style2 .partition-bg-wrap.inner-page:after {
-  background: url(assets/images/cta/style2/right-bg2.png);
+  background: url('/public/images/cta/style2/right-bg2.png');
   background-size: cover;
 }
 .rs-cta.style3 {
-  background: url(assets/images/bg/pattern1.png);
+  background: url('/public/images/bg/pattern1.png');
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: bottom;
@@ -13137,13 +13398,13 @@ body .modal-backdrop {
   z-index: -1;
 }
 .rs-cta.style7 .partition-bg-wrap:after {
-  background: url(assets/images/cta/home7/1.png);
+  background: url('/public/images/cta/home7/1.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 .rs-cta.style7 .partition-bg-wrap:before {
-  background: url(assets/images/cta/home7/2.png);
+  background: url('/public/images/cta/home7/2.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -13164,13 +13425,13 @@ body .modal-backdrop {
   z-index: -1;
 }
 .rs-cta.main-home .partition-bg-wrap:after {
-  background: url(assets/images/cta/home1.jpg);
+  background: url('/public/images/cta/home1.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 .rs-cta.main-home .partition-bg-wrap:before {
-  background: url(assets/images/cta/main-home.jpg);
+  background: url('/public/images/cta/main-home.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   right: 0;
@@ -13190,7 +13451,7 @@ body .modal-backdrop {
   z-index: -1;
 }
 .rs-cta.home9-style .partition-bg-wrap:after {
-  background: url(assets/images/cta/covid-19.jpg);
+  background: url('/public/images/cta/covid-19.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -13236,14 +13497,14 @@ body .modal-backdrop {
   padding-right: 15px;
 }
 .rs-cta.home11-style {
-  background: url(assets/images/cta/home11.jpg);
+  background: url('/public/images/cta/home11.jpg');
   background-repeat: no-repeat;
   background-position: bottom;
 }
 .rs-cta.home-style14 {
   max-width: 700px;
   margin: 0 auto;
-  background: url(assets/images/bg/home14/cta.jpg);
+  background: url('/public/images/bg/home14/cta.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -13279,7 +13540,7 @@ body .modal-backdrop {
 }
 .rs-cta.effects-layer .effects-bg.apply-bg {
   background-color: #F9F7F8;
-  background-image: url(assets/images/cta/style3/1-2.png);
+  background-image: url('/public/images/cta/style3/1-2.png');
   background-position: bottom right;
   background-repeat: no-repeat;
   border-radius: 4px 4px 4px 4px;
@@ -13287,7 +13548,7 @@ body .modal-backdrop {
 }
 .rs-cta.effects-layer .effects-bg.enroll-bg {
   background-color: #F9F7F8;
-  background-image: url(assets/images/cta/style3/2.png);
+  background-image: url('/public/images/cta/style3/2.png');
   background-position: bottom right;
   background-repeat: no-repeat;
   border-radius: 4px 4px 4px 4px;
@@ -13467,7 +13728,7 @@ body .modal-backdrop {
     24. Newsletter Section CSS
 ---------------------------------------*/
 .rs-newsletter.style1 .newsletter-wrap {
-  background: url(assets/images/bg/newsletter-bg.jpg);
+  background: url('/public/images/bg/newsletter-bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 3px;
@@ -13512,7 +13773,7 @@ body .modal-backdrop {
   background: #2e4778;
 }
 .rs-newsletter.style1.modify1 .newsletter-wrap {
-  background: url(assets/images/bg/newslatter-bg15.jpg);
+  background: url('/public/images/bg/newslatter-bg15.jpg');
 }
 .rs-newsletter.style1.modify1 .newsletter-wrap .newsletter-form button {
   background: #ff5421;
@@ -13521,7 +13782,7 @@ body .modal-backdrop {
   background: #ff5421;
 }
 .rs-newsletter.style2 {
-  background: url(assets/images/bg/newsletter-bg2.jpg);
+  background: url('/public/images/bg/newsletter-bg2.jpg');
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -13569,7 +13830,7 @@ body .modal-backdrop {
   background: #2db4de;
 }
 .rs-newsletter.style2.home11-style {
-  background: url(assets/images/bg/home11-news.jpg);
+  background: url('/public/images/bg/home11-news.jpg');
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -14056,7 +14317,7 @@ body .modal-backdrop {
   padding: 20px 14px 35px !important;
 }
 .rs-faq-part.style1 .img-part {
-  background: url(assets/images/faq/1.jpg);
+  background: url('/public/images/faq/1.jpg');
   background-size: cover;
   background-position: center;
   width: 100%;
@@ -15814,7 +16075,7 @@ body .modal-backdrop {
 }
 .rs-footer.orange-footer {
   background-color: #151515;
-  background-image: url(assets/images/bg/footer-bg2.jpg);
+  background-image: url('/public/images/bg/footer-bg2.jpg');
 }
 .rs-footer.orange-footer .footer-top .widget-title {
   color: #ffffff;
@@ -16107,7 +16368,7 @@ body .modal-backdrop {
   background: rgba(255, 255, 255, 0.1);
 }
 .rs-footer.home9-style.main-home.home13-style {
-  background: url(assets/images/bg/home13/footer.jpg);
+  background: url('/public/images/bg/home13/footer.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }

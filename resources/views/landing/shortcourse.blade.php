@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zxx">
-    <head> 
+    <head>
         <!-- meta tag -->
         <meta charset="utf-8">
         <title>Tumbuh Hospitality & Arts School</title>
@@ -46,7 +46,16 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/rs-spacing.css') }}">
 
         <!-- For Vite generated assets -->
-        @vite(['resources/css/app.css'])
+        @if (app()->environment('production'))
+    @php
+        $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);
+    @endphp
+    <link rel="stylesheet" href="{{ asset('build/' . $manifest['resources/css/app.css']['file']) }}">
+    <script type="module" src="{{ asset('build/' . $manifest['resources/js/app.js']['file']) }}"></script>
+@else
+    @viteReactRefresh
+    @vite(['resources/js/app.js', 'resources/css/app.css'])
+@endif
 
         <!-- responsive css -->
         <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}">
@@ -58,7 +67,7 @@
     </head>
 	<!--Warna Web orange = #FA8E00 | Abu = #303030 | Hijau = #00A450-->
     <body class="home-style5">
-        
+
         <!--Preloader area start here-->
         <div id="loader" class="loader orange-color">
             <div class="loader-container">
@@ -94,7 +103,7 @@
                                 <ul class="topbar-right">
                                     <li class="login-register"></li>
                                     <li class="btn-part">
-                                        <a class="apply-btn" href="https://wa.me/628112535100" target="_blank">Daftar Sekarang!</a>
+                                        <a class="apply-btn" href="https://wa.me/682223243036" target="_blank">Daftar Sekarang!</a>
                                     </li>
                                 </ul>
                             </div>
@@ -182,14 +191,14 @@
                                 <h2 class="title mb-17">Short Course Kuliner</h2>
                                 <div class="desc">
                                     <h5 style="margin-bottom: 5px;"><i>Salam pencinta dan penikmat kuliner</i></h5>
-                                    <p style="margin-bottom: 7px;">Tumbuh Hospitality & Arts School hadir untuk menyambut teman-teman semua yang memerlukan 
+                                    <p style="margin-bottom: 7px;">Tumbuh Hospitality & Arts School hadir untuk menyambut teman-teman semua yang memerlukan
                                        bekal pengetahuan, keterampilan, dan kecakapan hidup untuk mengembangkan diri, mengembangkan profesi,
                                        bekerja, atau berusaha mandiri di dunia kuliner. </p>
                                     <p style="margin-bottom: 2px;"><strong>Kami menyediakan kelas-kelas berupa:</strong></p>
                                     <ol style="padding-left: 15px;">
                                         <li>1. Cooking Class Program Intensif (usia remaja dan dewasa)</li>
                                         <li>2. Cooking Class Program Liburan (untuk anak-anak usia TK dan SD)</li>
-                                    </ol>   
+                                    </ol>
                                 </div>
                             </div>
                         </div>
@@ -204,10 +213,10 @@
             <div class=" art-course-container">
                 <div class="art-course-title">Short Course Eksplorasi Seni</div>
                 <blockquote class="art-course-quote">
-                    “Setiap anak adalah artis. Masalahnya bagaimana agar kita tetap menjadi artis pada saat dewasa."  
+                    “Setiap anak adalah artis. Masalahnya bagaimana agar kita tetap menjadi artis pada saat dewasa."
                     <br>- Pablo Picasso -
                 </blockquote>
-            
+
                 <div class="art-course-content">
                     <p>
                         Short course Eksplorasi Seni menyediakan pembelajaran seni 2D, 3D, fine arts, applied arts, dan seni kontemporer. Peserta juga akan diikutkan dalam pameran seni bersama, melakukan pameran bersama di luar kampus, atau melakukan pameran secara mandiri.
@@ -252,12 +261,12 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        
+
+
                     </div>
                 </div>
             </div>
-            
+
         </div>
         <!-- End Short Course Eksplorasi Seni Section -->
 
@@ -279,7 +288,7 @@
                 </div>
             </div>
             </div>
-        
+
             <!-- Fasilitas & Ketentuan Peserta Section -->
             <div class="row mb-5">
             <div class="col-md-6">
@@ -293,7 +302,7 @@
                 <div class="edu-list-item"><span class="icon-badge">💊</span><span>Obat-obatan P3K</span></div>
                 </div>
             </div>
-        
+
             <!-- Ketentuan Peserta dan Pengajar Card -->
             <div class="col-md-6">
                 <div class="card-edu p-4 rounded shadow-sm animate-hover">
@@ -301,12 +310,12 @@
                 <p class="ketentuan-list">Kapasitas Lab. Kitchen per sesi sebanyak 12-20 orang. <strong>Apabila peserta melebihi kapasitas, maka kegiatan Cookng Class akan disesuaikan.</strong></p>
                 <p class="ketentuan-list">Peserta anak-anak berkebutuhan khusus wajib didampingi untuk keselamatan.</p>
                 <p class="ketentuan-list"><strong>Ketentuan Pengajar :</strong> Pengajar adalah Chef dari Tumbuh Hospitality & Arts School, Rombongan 1 kelas memiliki asisten pengajar
-                
+
                 </p>
                 </div>
             </div>
             </div>
-        
+
             <!-- Tata Cara Pendaftaran Section -->
             <div class="row mb-5">
             <div class="col-lg-12">
@@ -360,7 +369,7 @@
             </div>
         </div>
 
-        
+
         <!-- Footer Start -->
         <footer id="rs-footer" class="rs-footer style8">
             <div class="footer-top">
@@ -409,7 +418,7 @@
                                 <li>
                                     <i class="flaticon-email"></i>
                                     <div class="desc">
-                                        <a href="mailto:hospitality.arts@sekolahtumbuh.sch.id">hospitality.arts@sekolahtumbuh.sch.id</a> 
+                                        <a href="mailto:hospitality.arts@sekolahtumbuh.sch.id">hospitality.arts@sekolahtumbuh.sch.id</a>
                                         <a href="https://sekolahtumbuh.sch.id">www.sekolahtumbuh.sch.id</a>
                                     </div>
                                 </li>
@@ -419,7 +428,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <div class="container">                    
+                <div class="container">
                     <div class="row y-middle">
                         <div class="col-lg-4 md-mb-20">
                             <div class="footer-logo md-text-center">
@@ -519,6 +528,15 @@
         <script src="{{ asset('js/contact.form.js') }}"></script>
 
         <!-- app js -->
-        @vite('resources/js/app.js')
+        @if (app()->environment('production'))
+    @php
+        $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);
+    @endphp
+    <link rel="stylesheet" href="{{ asset('build/' . $manifest['resources/css/app.css']['file']) }}">
+    <script type="module" src="{{ asset('build/' . $manifest['resources/js/app.js']['file']) }}"></script>
+@else
+    @viteReactRefresh
+    @vite(['resources/js/app.js', 'resources/css/app.css'])
+@endif
     </body>
 </html>

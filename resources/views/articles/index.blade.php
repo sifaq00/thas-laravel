@@ -46,13 +46,23 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/rs-spacing.css') }}">
 
         <!-- For Vite generated assets -->
-        @vite(['resources/css/app.css'])
+        @if (app()->environment('production'))
+    @php
+        $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);
+    @endphp
+    <link rel="stylesheet" href="{{ asset('build/' . $manifest['resources/css/app.css']['file']) }}">
+    <script type="module" src="{{ asset('build/' . $manifest['resources/js/app.js']['file']) }}"></script>
+@else
+    @viteReactRefresh
+    @vite(['resources/js/app.js', 'resources/css/app.css'])
+@endif
 
         <!-- responsive css -->
         <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
 
 
     </head>
@@ -94,7 +104,7 @@
                                 <ul class="topbar-right">
                                     <li class="login-register"></li>
                                     <li class="btn-part">
-                                        <a class="apply-btn" href="https://wa.me/628112535100" target="_blank">Daftar Sekarang!</a>
+                                        <a class="apply-btn" href="https://wa.me/682223243036" target="_blank">Daftar Sekarang!</a>
                                     </li>
                                 </ul>
                             </div>
@@ -168,13 +178,16 @@
 
 
         <!-- Section: Artikel -->
+        <div data-aos="fade-right">
         <div class="container">
             <h2 class="text-center mb-4 font-bold text-2xl md:text-2xl lg:text-4xl">
                 Info dan Berita Tumbuh Hospitality & Arts School</h2>
         </div>
+        </div>
 
 
        <!-- Pencarian -->
+       <div class="fade-in">
         <div class="container mb-5">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
@@ -199,6 +212,7 @@
                 </div>
             </div>
         </div>
+    </div>
 
         <section class="container my-5">
             <div class="row">
@@ -225,7 +239,7 @@
                     />
                     <div class="card-body">
                         <h5 class="article-title mb-2">{{ $article->title }}</h5>
-                        <p class="card-text small text-muted mb-2">{{ $article->created_at->format('d M Y : H.i') }} | {{ $article->author }}</p>
+                        <p class="card-text small text-muted mb-2">{{ $article->created_at->timezone('Asia/Jakarta')->format('d M Y : H.i') }} | {{ $article->author }}</p>
                         <p class="card-text">
                             {!! nl2br(e(strip_tags(Str::limit($article->content, 100)))) !!}
                         </p>
@@ -273,7 +287,7 @@
                     <h4 class="fw-bold mb-3 border-bottom pb-2">Informasi Pendaftaran</h4>
                     <div class="card info-card mb-3">
                     <img
-                        src="{{ asset('images/poster/posterpendaftaran1.jpg') }}"
+                        src="{{ asset('images/poster/pendaftaran-new.PNG') }}"
                         class="card-img-top"
                         alt="Poster Pendaftaran"
                     />
@@ -305,11 +319,12 @@
                             <!-- Carousel Gambar -->
                             <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-inner">
-                                    <!-- Gambar Pertama -->
                                     <div class="carousel-item active">
+                                        <img src="{{ asset('images/poster/pendaftaran-new.PNG') }}" class="d-block w-100" alt="Poster Pendaftaran New">
+                                    </div>
+                                    <div class="carousel-item">
                                         <img src="{{ asset('images/poster/posterpendaftaran1.jpg') }}" class="d-block w-100" alt="Poster Pendaftaran 1">
                                     </div>
-                                    <!-- Gambar Kedua -->
                                     <div class="carousel-item">
                                         <img src="{{ asset('images/poster/posterpendaftaran2.jpg') }}" class="d-block w-100" alt="Poster Pendaftaran 2">
                                     </div>
@@ -403,7 +418,7 @@
                     <div class="row y-middle">
                         <div class="col-lg-4 md-mb-20">
                             <div class="footer-logo md-text-center">
-                                <a href="index.html"><img src="assets/images/thas/white.png" alt=""></a>
+                                <a href="index.html"><img src="{{ asset('images/thas/white.png') }}" alt=""></a>
                             </div>
                         </div>
                         <div class="col-lg-4 md-mb-20">
@@ -496,7 +511,23 @@
 		<script src="{{ asset('js/contact.form.js') }}"></script>
 
 		<!-- app js -->
-        @vite('resources/js/app.js')
+        @if (app()->environment('production'))
+    @php
+        $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);
+    @endphp
+    <link rel="stylesheet" href="{{ asset('build/' . $manifest['resources/css/app.css']['file']) }}">
+    <script type="module" src="{{ asset('build/' . $manifest['resources/js/app.js']['file']) }}"></script>
+@else
+    @viteReactRefresh
+    @vite(['resources/js/app.js', 'resources/css/app.css'])
+@endif
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+        <script>
+             AOS.init();
+        </script>
+
 
     </body>
 </html>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zxx">
-    <head> 
+    <head>
         <!-- meta tag -->
         <meta charset="utf-8">
         <title>Tumbuh Hospitality & Arts School</title>
@@ -46,7 +46,16 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/rs-spacing.css') }}">
 
         <!-- For Vite generated assets -->
-        @vite(['resources/css/app.css'])
+        @if (app()->environment('production'))
+    @php
+        $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);
+    @endphp
+    <link rel="stylesheet" href="{{ asset('build/' . $manifest['resources/css/app.css']['file']) }}">
+    <script type="module" src="{{ asset('build/' . $manifest['resources/js/app.js']['file']) }}"></script>
+@else
+    @viteReactRefresh
+    @vite(['resources/js/app.js', 'resources/css/app.css'])
+@endif
 
         <!-- responsive css -->
         <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}">
@@ -58,7 +67,7 @@
     </head>
 	<!--Warna Web orange = #FA8E00 | Abu = #303030 | Hijau = #00A450-->
     <body class="home-style5">
-        
+
         <!--Preloader area start here-->
         <div id="loader" class="loader orange-color">
             <div class="loader-container">
@@ -94,7 +103,7 @@
                                 <ul class="topbar-right">
                                     <li class="login-register"></li>
                                     <li class="btn-part">
-                                        <a class="apply-btn" href="https://wa.me/628112535100" target="_blank">Daftar Sekarang!</a>
+                                        <a class="apply-btn" href="https://wa.me/682223243036" target="_blank">Daftar Sekarang!</a>
                                     </li>
                                 </ul>
                             </div>
@@ -190,8 +199,8 @@
                 </div>
             </div>
         </div>
-        
-        
+
+
         <!-- Kurikulum dan Pembelajaran Section -->
         <div class="educational-program-content-wrapper">
             <div id="curriculum-learning-section" class="curriculum-learning-section pt-50 pb-100 md-pt-70 md-pb-70">
@@ -234,19 +243,19 @@
         </div>
         <!-- End Kurikulum dan Pembelajaran Section -->
 
-        
+
 
         <!-- Section Program Keistimewaan -->
         <section id="program-keistimewaan" class="py-5">
             <div class="container">
                 <h2 class="text-center mb-4 program-title">Program Keistimewaan Kampus</h2>
                 <p class="text-center lead mb-3 program-description">
-                    Tumbuh Hospitality & Arts School memiliki program keistimewaan <strong>Green Entrepreneurship</strong>. Program ini menjadi program unggulan dan kekhasan dari Tumbuh Hospitality & Arts School.  
+                    Tumbuh Hospitality & Arts School memiliki program keistimewaan <strong>Green Entrepreneurship</strong>. Program ini menjadi program unggulan dan kekhasan dari Tumbuh Hospitality & Arts School.
                 </p>
                 <p class="text-center lead mb-4 program-description">
                     Program ini terintegrasi pada mata kuliah Green Entrepreneurship dan berbasis projek (Project Based Learning) yang berbentuk unit usaha kuliner. Dibawah ini adalah tujuan dan kegiatan dari program keistimewaan Green Entrepreneurship
                 </p>
-                
+
                 <div class="row">
                     <!-- Card 1: Pengembangan Pembelajaran -->
                     <div class="col-md-6 mb-4">
@@ -292,7 +301,7 @@
                             <div class="col-md-3">
                                 <img src="{{ asset('images/thas/bakehouse.png') }}" alt="Tumbuh BakeHouse" class="bakehouse-img img-fluid">
                             </div>
-                            <div class="col-md-9"> 
+                            <div class="col-md-9">
                                 <h3 class="bakehouse-title">Tumbuh BakeHouse</h3>
                                 <p class="bakehouse-text">
                                     Tumbuh BakeHouse merupakan merk produk sekaligus nama unit usaha kuliner yang telah dihasilkan dari program keistimewaan kampus Green Entrepreneurship.
@@ -300,13 +309,13 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </section>
         <!-- End Section Program Keistimewaan -->
-        
-        
+
+
         <!-- Gallery Section -->
         <div class="container my-5">
             <h2 class="text-center gallery-title mb-5">Galeri Kegiatan</h2>
@@ -346,8 +355,8 @@
             </div>
         </div>
         <!-- End Gallery Section -->
-</div> 
-<!-- Main content End --> 
+</div>
+<!-- Main content End -->
 
         <!-- Footer Start -->
         <footer id="rs-footer" class="rs-footer style8">
@@ -397,7 +406,7 @@
                                 <li>
                                     <i class="flaticon-email"></i>
                                     <div class="desc">
-                                        <a href="mailto:hospitality.arts@sekolahtumbuh.sch.id">hospitality.arts@sekolahtumbuh.sch.id</a> 
+                                        <a href="mailto:hospitality.arts@sekolahtumbuh.sch.id">hospitality.arts@sekolahtumbuh.sch.id</a>
                                         <a href="https://sekolahtumbuh.sch.id">www.sekolahtumbuh.sch.id</a>
                                     </div>
                                 </li>
@@ -407,7 +416,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <div class="container">                    
+                <div class="container">
                     <div class="row y-middle">
                         <div class="col-lg-4 md-mb-20">
                             <div class="footer-logo md-text-center">
@@ -508,6 +517,15 @@
         <script src="{{ asset('js/contact.form.js') }}"></script>
 
         <!-- app js -->
-        @vite('resources/js/app.js')
+        @if (app()->environment('production'))
+    @php
+        $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);
+    @endphp
+    <link rel="stylesheet" href="{{ asset('build/' . $manifest['resources/css/app.css']['file']) }}">
+    <script type="module" src="{{ asset('build/' . $manifest['resources/js/app.js']['file']) }}"></script>
+@else
+    @viteReactRefresh
+    @vite(['resources/js/app.js', 'resources/css/app.css'])
+@endif
     </body>
 </html>

@@ -75,9 +75,10 @@ class ArticleResource extends Resource
                         return $record->image;
                     })
                     ->disk('public')
-                    ->url(fn ($record) => asset('storage/uploads/articles/' . $record->image)),
+                    ->url(fn ($record) => asset('storage/' . $record->image)),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime('d M Y'),
+                    ->dateTime('d M Y - H:i')
+                    ->timezone('Asia/Jakarta'),
             ])
             ->filters([
                 //

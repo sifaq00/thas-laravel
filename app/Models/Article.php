@@ -10,6 +10,10 @@ class Article extends Model
     use HasFactory;
 
     protected $fillable = ['title', 'content', 'image', 'category_id', 'author'];
+    protected $casts = [
+        'created_at' => 'datetime:Asia/Jakarta',
+    ];
+
 
     public function category()
     {

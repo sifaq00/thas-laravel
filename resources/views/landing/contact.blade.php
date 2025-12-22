@@ -11,43 +11,52 @@
                 <!-- favicon -->
                 <link rel="apple-touch-icon" href="{{ asset('images/apple-touch-icon.png') }}">
                 <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/tumbuh/favicon-tumbuh.png') }}">
-        
+
                 <!-- Bootstrap v5.0.2 css -->
                 <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
-        
+
                 <!-- font-awesome css -->
                 <link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome.min.css') }}">
-        
+
                 <!-- animate css -->
                 <link rel="stylesheet" type="text/css" href="{{ asset('css/animate.css') }}">
-        
+
                 <!-- owl.carousel css -->
                 <link rel="stylesheet" type="text/css" href="{{ asset('css/owl.carousel.css') }}">
-        
+
                 <!-- slick css -->
                 <link rel="stylesheet" type="text/css" href="{{ asset('css/slick.css') }}">
-        
+
                 <!-- off canvas css -->
                 <link rel="stylesheet" type="text/css" href="{{ asset('css/off-canvas.css') }}">
-        
+
                 <!-- linea-font css -->
                 <link rel="stylesheet" type="text/css" href="{{ asset('fonts/linea-fonts.css') }}">
-        
+
                 <!-- flaticon css  -->
                 <link rel="stylesheet" type="text/css" href="{{ asset('fonts/flaticon.css') }}">
-        
+
                 <!-- magnific popup css -->
                 <link rel="stylesheet" type="text/css" href="{{ asset('css/magnific-popup.css') }}">
-        
+
                 <!-- Main Menu css -->
                 <link rel="stylesheet" href="{{ asset('css/rsmenu-main.css') }}">
-        
+
                 <!-- spacing css -->
                 <link rel="stylesheet" type="text/css" href="{{ asset('css/rs-spacing.css') }}">
-        
+
                 <!-- For Vite generated assets -->
-                @vite(['resources/css/app.css'])
-        
+                @if (app()->environment('production'))
+    @php
+        $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);
+    @endphp
+    <link rel="stylesheet" href="{{ asset('build/' . $manifest['resources/css/app.css']['file']) }}">
+    <script type="module" src="{{ asset('build/' . $manifest['resources/js/app.js']['file']) }}"></script>
+@else
+    @viteReactRefresh
+    @vite(['resources/js/app.js', 'resources/css/app.css'])
+@endif
+
                 <!-- responsive css -->
                 <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}">
                 <!--[if lt IE 9]>
@@ -58,18 +67,18 @@
             </head>
             <!--Warna Web orange = #FA8E00 | Abu = #303030 | Hijau = #00A450-->
             <body class="home-style5">
-                
+
                 <!--Preloader area start here-->
                 <div id="loader" class="loader orange-color">
                     <div class="loader-container">
                         <div class='loader-icon'>
                             <img src="{{ asset('images/thas/thas.png') }}" alt="">
-        
+
                         </div>
                     </div>
                 </div>
                 <!--Preloader area End here-->
-        
+
                 <!--Full width header Start-->
                 <div class="full-width-header header-style2">
                     <!--Header Start-->
@@ -94,7 +103,7 @@
                                         <ul class="topbar-right">
                                             <li class="login-register"></li>
                                             <li class="btn-part">
-                                                <a class="apply-btn" href="https://wa.me/628112535100" target="_blank">Daftar Sekarang!</a>
+                                                <a class="apply-btn" href="https://wa.me/682223243036" target="_blank">Daftar Sekarang!</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -102,7 +111,7 @@
                             </div>
                         </div>
                         <!-- Topbar Area End -->
-        
+
                         <!-- Menu Start -->
                         <div class="menu-area menu-sticky">
                             <div class="container">
@@ -133,9 +142,9 @@
                                                       </li>
                                                        <li class="menu">
                                                            <a href="{{ route('about') }}">About</a>
-        
+
                                                        </li>
-        
+
                                                        <li class="menu-item-has-children">
                                                            <a href="#">Program</a>
                                                            <ul class="sub-menu">
@@ -143,11 +152,11 @@
                                                                <li><a href="{{ route('shortcourse') }}">Program Short Course</a> </li>
                                                            </ul>
                                                        </li>
-        
+
                                                        <li class="menu">
                                                            <a href="{{ route('articles.index') }}">Info & Berita</a>
                                                        </li>
-        
+
                                                        <li class="current-menu-item">
                                                            <a href="#">Kontak</a>
                                                        </li>
@@ -164,7 +173,7 @@
                     <!--Header End-->
                 </div>
                 <!--Full width header End-->
-        
+
         <section id="kontak" class="kontak-container py-5">
             <h2 class="kontak-title text-center mb-4">Kontak Kami</h2>
             <div class="row">
@@ -196,7 +205,7 @@
               </div>
             </div>
           </section>
-        
+
           <!-- Peta Lokasi -->
           <section class="container py-5 peta">
             <h4 class="text-center mb-4">Lokasi Kami</h4>
@@ -204,7 +213,7 @@
               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.4668854711276!2d110.35326317405057!3d-7.846104877966404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a57eafc8da2d7%3A0x296082143669b908!2z6qeL6qax6qa86qaP6qa66qa06qat6qaD6qag6qa46qap6qeA6qan6qa46qaDIFNFS09MQUggVFVNQlVI!5e0!3m2!1sid!2sid!4v1731408017564!5m2!1sid!2sid" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
           </section>
-        
+
 
         <!-- Footer Start -->
         <footer id="rs-footer" class="rs-footer style8">
@@ -254,7 +263,7 @@
                                 <li>
                                     <i class="flaticon-email"></i>
                                     <div class="desc">
-                                        <a href="mailto:hospitality.arts@sekolahtumbuh.sch.id">hospitality.arts@sekolahtumbuh.sch.id</a> 
+                                        <a href="mailto:hospitality.arts@sekolahtumbuh.sch.id">hospitality.arts@sekolahtumbuh.sch.id</a>
                                         <a href="https://sekolahtumbuh.sch.id">www.sekolahtumbuh.sch.id</a>
                                     </div>
                                 </li>
@@ -264,7 +273,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <div class="container">                    
+                <div class="container">
                     <div class="row y-middle">
                         <div class="col-lg-4 md-mb-20">
                             <div class="footer-logo md-text-center">
@@ -320,7 +329,7 @@
 				});
 			});
 		</script>
-		
+
         <!-- Search Modal End -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
@@ -376,6 +385,15 @@
         <script src="{{ asset('js/contact.form.js') }}"></script>
 
         <!-- app js -->
-        @vite('resources/js/app.js')
+        @if (app()->environment('production'))
+    @php
+        $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);
+    @endphp
+    <link rel="stylesheet" href="{{ asset('build/' . $manifest['resources/css/app.css']['file']) }}">
+    <script type="module" src="{{ asset('build/' . $manifest['resources/js/app.js']['file']) }}"></script>
+@else
+    @viteReactRefresh
+    @vite(['resources/js/app.js', 'resources/css/app.css'])
+@endif
 </body>
 </html>

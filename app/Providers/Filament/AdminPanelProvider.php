@@ -61,8 +61,7 @@ class AdminPanelProvider extends PanelProvider
                 DispatchServingFilamentEvent::class,
             ])
             ->authMiddleware([
-                Authenticate::class,
-            ])
-            ->viteTheme('resources/css/filament/admin/theme.css');
+                \App\Http\Middleware\Authenticate::class,])
+            ->theme(asset('build/assets/theme-C6OioCSN.css'));
     }
 }

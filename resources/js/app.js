@@ -9,6 +9,12 @@
 * -----------------------------------------------------------------------------
 *
 **/
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+AOS.init();
+
+
 (function($) {
 	"use strict";
     // sticky menu
@@ -439,6 +445,7 @@ document.addEventListener('DOMContentLoaded', addScrollAnimation);
           alert('Silakan lengkapi semua kolom!');
         }
       });
+
 
 
 })(jQuery);

@@ -46,7 +46,16 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/rs-spacing.css') }}">
 
         <!-- For Vite generated assets -->
-        @vite(['resources/css/app.css'])
+        @if (app()->environment('production'))
+    @php
+        $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);
+    @endphp
+    <link rel="stylesheet" href="{{ asset('build/' . $manifest['resources/css/app.css']['file']) }}">
+    <script type="module" src="{{ asset('build/' . $manifest['resources/js/app.js']['file']) }}"></script>
+@else
+    @viteReactRefresh
+    @vite(['resources/js/app.js', 'resources/css/app.css'])
+@endif
 
         <!-- responsive css -->
         <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}">
@@ -91,7 +100,7 @@
                                 <ul class="topbar-right">
                                     <li class="login-register"></li>
                                     <li class="btn-part">
-                                        <a class="apply-btn" href="https://wa.me/628112535100" target="_blank">Daftar Sekarang!</a>
+                                        <a class="apply-btn" href="https://wa.me/682223243036" target="_blank">Daftar Sekarang!</a>
                                     </li>
                                 </ul>
                             </div>
@@ -213,7 +222,7 @@
             <!-- Slider Section End -->
 
 
-        
+
             <!-- About Section Start -->
             <div class="container">
             <div id="section-tentang" class="kontainer-tentang padding-atas-besar padding-bawah-sedang md-padding-atas-kecil md-padding-bawah-kecil">
@@ -225,7 +234,7 @@
                                 <img src="{{ asset('images/thas/lkp4-2.png') }}" alt="Gambar Tentang Kami">
                             </div>
                         </div>
-            
+
                         <!-- Bagian Teks -->
                         <div class="col-lg-6 bagian-teks">
                             <div class="konten-teks munculPerlahan" data-delay="300ms" data-duration="2000ms">
@@ -242,7 +251,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>  
+                    </div>
                 </div>
             </div>
         </div>
@@ -377,11 +386,11 @@
                            </div>
                         </div>
                     </div>
-                        
+
                     </div>
                 </div>
             </div>
-        
+
             <!-- Categories Section End -->
 
             <!-- Events Section Start -->
@@ -406,10 +415,10 @@
                                 <div class="content-part">
                                     <h4 class="title"><a href="{{ route('articles.show', $article->id) }}">{{ $article->title }}</a></h4>
                                     <div class="time-sec">
-                                        <div class="timesec"><i class="fa flaticon-clock"></i> 
+                                        <div class="timesec"><i class="fa flaticon-clock"></i>
                                             {{ $article->created_at->format('H.i') }}
                                         </div>
-                                        <div class="address"><i class="fa fa-map-o"></i> 
+                                        <div class="address"><i class="fa fa-map-o"></i>
                                             {{ $article->author }}
                                         </div>
                                     </div>
@@ -420,7 +429,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Events Section End -->
 
             <!-- About Section Start -->
@@ -475,7 +484,7 @@
             Newsletter section end -->
 
             <!-- Testimonial Section Start -->
-            <div class="rs-testimonial style8 pt-100 pb-100 md-pt-70 md-pb-70">
+            <div class="rs-testimonial style8 pt-10 pb-100 md-pt-70 md-pb-70">
               <div class="container">
                 <div class="sec-title3 text-center">
                     <div class="sub-title uppercase mb-10">
@@ -747,6 +756,15 @@
         <script src="{{ asset('js/contact.form.js') }}"></script>
 
         <!-- app js -->
-        @vite('resources/js/app.js')
+        @if (app()->environment('production'))
+    @php
+        $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);
+    @endphp
+    <link rel="stylesheet" href="{{ asset('build/' . $manifest['resources/css/app.css']['file']) }}">
+    <script type="module" src="{{ asset('build/' . $manifest['resources/js/app.js']['file']) }}"></script>
+@else
+    @viteReactRefresh
+    @vite(['resources/js/app.js', 'resources/css/app.css'])
+@endif
     </body>
 </html>
