@@ -1,542 +1,175 @@
-<!DOCTYPE html>
-<html lang="zxx">
-    <head>
-        <!-- meta tag -->
-        <meta charset="utf-8">
-        <title>Tumbuh Hospitality & Arts School</title>
-        <meta name="description" content="">
-        <!-- responsive tag -->
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- favicon -->
-        <link rel="apple-touch-icon" href="{{ asset('images/apple-touch-icon.png') }}">
-        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/tumbuh/favicon-tumbuh.png') }}">
+@extends('layouts.app')
 
-        <!-- Bootstrap v5.0.2 css -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
+@section('title', 'Short Course - Tumbuh Hospitality & Arts School')
 
-        <!-- font-awesome css -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome.min.css') }}">
+@section('content')
 
-        <!-- animate css -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/animate.css') }}">
+@php
+    $arts = [
+        ['title' => 'Wahana Ekspresi', 'desc' => 'Menyuarakan jiwa dan emosi melalui beragam media seni.', 'icon' => 'fa-palette'],
+        ['title' => 'Kreativitas', 'desc' => 'Merangsang imajinasi tanpa batas dan menginspirasi inovasi.', 'icon' => 'fa-lightbulb'],
+        ['title' => 'Pengembangan Bakat', 'desc' => 'Mengasah bakat dan minat untuk membantu anak-anak bersinar.', 'icon' => 'fa-star'],
+        ['title' => 'Keterampilan', 'desc' => 'Melatih keterampilan dan ketekunan melalui proses kreatif.', 'icon' => 'fa-tools'],
+        ['title' => 'Kepribadian', 'desc' => 'Membentuk karakter yang kuat dan autentik lewat seni.', 'icon' => 'fa-user-check'],
+        ['title' => 'Estetika', 'desc' => 'Menumbuhkan apresiasi terhadap keindahan dan estetika.', 'icon' => 'fa-eye'],
+    ];
+@endphp
 
-        <!-- owl.carousel css -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/owl.carousel.css') }}">
+    <div class="pt-28 md:pt-42 lg:pt-44 pb-6 bg-white">
+        <div class="container mx-auto px-4 lg:px-8 text-center border-b border-gray-100 pb-8">
 
-        <!-- slick css -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/slick.css') }}">
+            <nav class="flex justify-center items-center text-gray-500 text-xs md:text-sm font-medium space-x-2 mb-4">
+                <a href="{{ route('landingpage') }}" class="hover:text-[#FA8E00] transition">Home</a>
+                <span class="text-gray-300">/</span>
+                <span class="text-[#FA8E00] font-bold">Short Course</span>
+            </nav>
 
-        <!-- off canvas css -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/off-canvas.css') }}">
-
-        <!-- linea-font css -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('fonts/linea-fonts.css') }}">
-
-        <!-- flaticon css  -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('fonts/flaticon.css') }}">
-
-        <!-- magnific popup css -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/magnific-popup.css') }}">
-
-        <!-- Main Menu css -->
-        <link rel="stylesheet" href="{{ asset('css/rsmenu-main.css') }}">
-
-        <!-- spacing css -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/rs-spacing.css') }}">
-
-        <!-- For Vite generated assets -->
-        @if (app()->environment('production'))
-    @php
-        $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);
-    @endphp
-    <link rel="stylesheet" href="{{ asset('build/' . $manifest['resources/css/app.css']['file']) }}">
-    <script type="module" src="{{ asset('build/' . $manifest['resources/js/app.js']['file']) }}"></script>
-@else
-    @viteReactRefresh
-    @vite(['resources/js/app.js', 'resources/css/app.css'])
-@endif
-
-        <!-- responsive css -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}">
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    </head>
-    </head>
-	<!--Warna Web orange = #FA8E00 | Abu = #303030 | Hijau = #00A450-->
-    <body class="home-style5">
-
-        <!--Preloader area start here-->
-        <div id="loader" class="loader orange-color">
-            <div class="loader-container">
-                <div class='loader-icon'>
-                    <img src="{{ asset('images/thas/thas.png') }}" alt="">
-
-                </div>
-            </div>
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#112958] leading-tight animate-fade-in-up">
+                Program Short Course
+            </h1>
         </div>
-        <!--Preloader area End here-->
-
-        <!--Full width header Start-->
-        <div class="full-width-header header-style2">
-            <!--Header Start-->
-            <header id="rs-header" class="rs-header">
-                <!-- Topbar Area Start -->
-                <div class="topbar-area home8-topbar">
-                    <div class="container">
-                        <div class="row y-middle">
-                            <div class="col-md-6">
-                                <ul class="topbar-contact">
-                                    <li>
-                                        <i class="flaticon-email"></i>
-                                        <a href="mailto:hospitality.arts@sekolahtumbuh.sch.id">hospitality.arts@sekolahtumbuh.sch.id</a>
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-phone"></i>
-                                        0822–2324-3036
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6 text-end">
-                                <ul class="topbar-right">
-                                    <li class="login-register"></li>
-                                    <li class="btn-part">
-                                        <a class="apply-btn" href="https://wa.me/682223243036" target="_blank">Daftar Sekarang!</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Topbar Area End -->
-
-                <!-- Menu Start -->
-                <div class="menu-area menu-sticky">
-                    <div class="container">
-                        <div class="row y-middle">
-                            <div class="col-lg-5">
-                                <div class="logo-cat-wrap">
-                                    <div class="logo-part pr-90">
-                                        <a class="dark-logo" href="{{ route('landingpage') }}">
-                                            <img src="{{ asset('images/thas/menu.png') }}" alt="">
-                                        </a>
-                                        <a class="light-logo" href="{{ route('landingpage') }}">
-                                            <img src="{{ asset('images/thas/white.png') }}" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-7 text-center">
-                                <div class="rs-menu-area">
-                                    <div class="main-menu pr-30">
-                                        <div class="mobile-menu">
-                                            <a class="rs-menu-toggle">
-                                                <i class="fa fa-bars"></i>
-                                            </a>
-                                        </div>
-                                        <nav class="rs-menu">
-                                           <ul class="nav-menu">
-                                              <li class="rs-mega-menu mega-rs "> <a href="{{ route('landingpage') }}">Home</a>
-                                              </li>
-                                               <li class="menu">
-                                                   <a href="{{ route('about') }}">About</a>
-
-                                               </li>
-
-                                               <li class="menu-item-has-children current-menu-item">
-                                                   <a href="#">Program</a>
-                                                   <ul class="sub-menu">
-                                                       <li><a href="{{ route('perhotelan') }}">Program Perhotelan</a> </li>
-                                                       <li><a href="{{ route('shortcourse') }}">Program Short Course</a> </li>
-                                                   </ul>
-                                               </li>
-
-                                               <li class="menu">
-                                                   <a href="{{ route('articles.index') }}">Info & Berita</a>
-                                               </li>
-
-                                               <li class="menu">
-                                                   <a href="{{ route('contact') }}">Kontak</a>
-                                               </li>
-                                           </ul> <!-- //.nav-menu -->
-                                        </nav>
-                                    </div> <!-- //.main-menu -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Menu End -->
-            </header>
-            <!--Header End-->
-        </div>
-        <!--Full width header End-->
-
-
-		<!-- Main content Start -->
-        <div class="main-content">
-            <div id="rs-about" class="rs-about style1 pt-50 pb-100 md-pt-70 md-pb-70">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6 order-last padding-0 md-pl-15 md-pr-15 md-mb-30 wow fadeInRight" data-wow-delay="300ms" data-wow-duration="2000ms">
-                            <div class="video-part">
-                                <iframe class="styled-video" width="100%" height="315" src="https://www.youtube.com/embed/Pz16x5L9TMM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 pr-70 md-pr-15 wow fadeInLeft" data-wow-delay="300ms" data-wow-duration="2000ms">
-                            <div class="sec-title">
-                                <div class="sub-title orange">Tentang Kami</div>
-                                <h2 class="title mb-17">Short Course Kuliner</h2>
-                                <div class="desc">
-                                    <h5 style="margin-bottom: 5px;"><i>Salam pencinta dan penikmat kuliner</i></h5>
-                                    <p style="margin-bottom: 7px;">Tumbuh Hospitality & Arts School hadir untuk menyambut teman-teman semua yang memerlukan
-                                       bekal pengetahuan, keterampilan, dan kecakapan hidup untuk mengembangkan diri, mengembangkan profesi,
-                                       bekerja, atau berusaha mandiri di dunia kuliner. </p>
-                                    <p style="margin-bottom: 2px;"><strong>Kami menyediakan kelas-kelas berupa:</strong></p>
-                                    <ol style="padding-left: 15px;">
-                                        <li>1. Cooking Class Program Intensif (usia remaja dan dewasa)</li>
-                                        <li>2. Cooking Class Program Liburan (untuk anak-anak usia TK dan SD)</li>
-                                    </ol>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- Short Course Eksplorasi Seni Section -->
-        <div class="art-section">
-            <div class=" art-course-container">
-                <div class="art-course-title">Short Course Eksplorasi Seni</div>
-                <blockquote class="art-course-quote">
-                    “Setiap anak adalah artis. Masalahnya bagaimana agar kita tetap menjadi artis pada saat dewasa."
-                    <br>- Pablo Picasso -
-                </blockquote>
-
-                <div class="art-course-content">
-                    <p>
-                        Short course Eksplorasi Seni menyediakan pembelajaran seni 2D, 3D, fine arts, applied arts, dan seni kontemporer. Peserta juga akan diikutkan dalam pameran seni bersama, melakukan pameran bersama di luar kampus, atau melakukan pameran secara mandiri.
-                    </p>
-                    <div class="art-course-goals">
-                        <h3 class="goals-title">Melalui Short course Eksplorasi Seni, kami ingin mengajak anak-anak dan orang tua melihat seni dengan lebih luas, yaitu:</h3>
-                        <div class="art-course-cards">
-                            <div class="creative-card">
-                                <div class="content-art">
-                                    <h3>Seni sebagai wahana ekspresi</h3>
-                                    <p>Menyuarakan jiwa dan emosi melalui beragam media seni.</p>
-                                </div>
-                            </div>
-                            <div class="creative-card">
-                                <div class="content-art">
-                                    <h3>Seni sebagai sarana pengembangan kreativitas</h3>
-                                    <p>Merangsang imajinasi tanpa batas dan menginspirasi inovasi.</p>
-                                </div>
-                            </div>
-                            <div class="creative-card">
-                                <div class="content-art">
-                                    <h3>Seni sebagai pengembangan bakat anak</h3>
-                                    <p>Mengasah bakat dan minat untuk membantu anak-anak bersinar.</p>
-                                </div>
-                            </div>
-                            <div class="creative-card">
-                                <div class="content-art">
-                                    <h3>Seni sebagai sarana pembinaan keterampilan</h3>
-                                    <p>Melatih keterampilan dan ketekunan melalui proses kreatif.</p>
-                                </div>
-                            </div>
-                            <div class="creative-card">
-                                <div class="content-art">
-                                    <h3>Seni sebagai sarana pembentukan kepribadian</h3>
-                                    <p>Membentuk karakter yang kuat dan autentik lewat seni.</p>
-                                </div>
-                            </div>
-                            <div class="creative-card">
-                                <div class="content-art">
-                                    <h3>Seni sebagai sarana pembinaan impuls estetik</h3>
-                                    <p>Menumbuhkan apresiasi terhadap keindahan dan estetika.</p>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <!-- End Short Course Eksplorasi Seni Section -->
-
-
-        <!-- Paket Edukasi Cooking Class Section -->
-        <div class="cooking-class">
-        <section class="cooking-header">
-            <div class="overlay"></div>
-            <h1 class="display-4">Paket Edukasi Cooking Class</h1>
-            <p class="lead">Paket Edukasi Cooking Class adalah program layanan pembelajaran pengolahan menu makanan, minuman, kue-kue, atau roti di Tumbuh Hospitality & Arts School.</p>
-        </section>
-
-        <section id="edu-section" class="edu-section container">
-            <div class="row mb-5">
-            <div class="col-lg-12">
-                <div class="card-edu p-4 rounded shadow-sm animate-hover">
-                <h2 class="edu-title">🎯 Sasaran (Internal)</h2>
-                <p>Semua siswa, edukator, dan staf Sekolah Tumbuh yang memerlukan bekal pengetahuan, keterampilan, dan kecakapan hidup untuk mengembangkan diri, mengembangkan profesi, bekerja, atau berwirausaha mandiri di dunia kuliner.</p>
-                </div>
-            </div>
-            </div>
-
-            <!-- Fasilitas & Ketentuan Peserta Section -->
-            <div class="row mb-5">
-            <div class="col-md-6">
-                <div class="card-edu p-4 rounded shadow-sm animate-hover">
-                <h2 class="edu-title">🍴 Fasilitas</h2>
-                <div class="edu-list-item"><span class="icon-badge">🍲</span><span>Bahan praktik disediakan</span></div>
-                <div class="edu-list-item"><span class="icon-badge">📜</span><span>Resep</span></div>
-                <div class="edu-list-item"><span class="icon-badge">👨‍🍳</span><span>Apron & topi chef (untuk anak-anak)</span></div>
-                <div class="edu-list-item"><span class="icon-badge">🛍️</span><span>Produk dibawa pulang</span></div>
-                <div class="edu-list-item"><span class="icon-badge">🏢</span><span>Lab. Kitchen ber-AC</span></div>
-                <div class="edu-list-item"><span class="icon-badge">💊</span><span>Obat-obatan P3K</span></div>
-                </div>
-            </div>
-
-            <!-- Ketentuan Peserta dan Pengajar Card -->
-            <div class="col-md-6">
-                <div class="card-edu p-4 rounded shadow-sm animate-hover">
-                <h2 class="edu-title">📋 Ketentuan Peserta dan Pengajar</h2>
-                <p class="ketentuan-list">Kapasitas Lab. Kitchen per sesi sebanyak 12-20 orang. <strong>Apabila peserta melebihi kapasitas, maka kegiatan Cookng Class akan disesuaikan.</strong></p>
-                <p class="ketentuan-list">Peserta anak-anak berkebutuhan khusus wajib didampingi untuk keselamatan.</p>
-                <p class="ketentuan-list"><strong>Ketentuan Pengajar :</strong> Pengajar adalah Chef dari Tumbuh Hospitality & Arts School, Rombongan 1 kelas memiliki asisten pengajar
-
-                </p>
-                </div>
-            </div>
-            </div>
-
-            <!-- Tata Cara Pendaftaran Section -->
-            <div class="row mb-5">
-            <div class="col-lg-12">
-                <div class="card-edu p-4 rounded shadow-sm animate-hover">
-                <h2 class="edu-title">📞 Tata Cara Pendaftaran</h2>
-                <p style="line-height: 1.5;">PIC rombongan dapat menghubungi admin di nomor <a href="https://wa.me/6282223243036" class="contact-link">0822-2324-3036</a></p>
-                <p style="line-height: 1.5;">PIC melakukan koordinasi persiapan dengan Tumbuh Hospitality & Arts School.</p>
-                </div>
-            </div>
-            </div>
-        </section>
     </div>
 
-    <!-- Gallery Section -->
-    <div class="gallery-cooking">
-        <div class="container my-5">
-            <h2 class="text-center gallery-title mb-5">Galeri Kegiatan</h2>
-            <div class="row gallery-grid">
-                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                    <div class="gallery-item">
-                        <img src="{{ asset('images/thas/lkp1.png') }}" alt="Gallery Image 1" class="img-fluid gallery-img">
-                        <div class="gallery-overlay">
-                            <div class="gallery-text">Kegiatan 1</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                    <div class="gallery-item">
-                        <img src="{{ asset('images/thas/lkp2.png') }}" alt="Gallery Image 2" class="img-fluid gallery-img">
-                        <div class="gallery-overlay">
-                            <div class="gallery-text">Kegiatan 2</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                    <div class="gallery-item">
-                        <img src="{{ asset('images/thas/lkp3.png') }}" alt="Gallery Image 3" class="img-fluid gallery-img">
-                        <div class="gallery-overlay">
-                            <div class="gallery-text">Kegiatan 3</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                    <div class="gallery-item">
-                        <img src="{{ asset('images/thas/lkp4.png') }}" alt="Gallery Image 3" class="img-fluid gallery-img">
-                        <div class="gallery-overlay">
-                            <div class="gallery-text">Kegiatan 4</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section class="pt-3 pb-16 md:pt-12 lg:pt-12 md:pb-24 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-14 items-center">
 
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl order-2 lg:order-1">
+                    <div class="aspect-video">
+                        <iframe class="w-full h-full"
+                                src="https://www.youtube.com/embed/Pz16x5L9TMM"
+                                allowfullscreen></iframe>
+                    </div>
+                </div>
 
-        <!-- Footer Start -->
-        <footer id="rs-footer" class="rs-footer style8">
-            <div class="footer-top">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-12 col-sm-12 footer-widget md-mb-50">
-                            <h4 class="widget-title">Program Studi</h4>
-                            <ul class="site-map">
-                                <li><a href="#">Program Perhotelan</a></li>
-                                <li><a href="#">Short Course</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-3 col-md-12 col-sm-12 footer-widget md-mb-50">
-                            <h4 class="widget-title">Short Course Program</h4>
-                            <ul class="site-map">
-                                <li><a href="#">Short Course Kuliner</a></li>
-                                <li><a href="#">Short Course Eksplorasi Seni</a></li>
-                                <li><a href="#">Paket Edukasi Cooking Class</a></li>
-                                <li><a href="#">Galeri Kegiatan</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-3 col-md-12 col-sm-12 footer-widget md-mb-50">
-                            <h4 class="widget-title">Kemitraan</h4>
-                            <ul class="site-map">
-                                <li><a href="#">Artotel Hotel</a></li>
-                                <li><a href="#">Grup Mesa</a></li>
-                                <li><a href="#">Grup Colours Street Food</a></li>
-                                <li><a href="#">Grup Casa</a></li>
-                                <li><a href="#">JNM Bloc</a></li>
-                                <li><a href="#">Grup Kopi Mlaku</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-3 col-md-12 col-sm-12 footer-widget">
-                            <h4 class="widget-title">Address</h4>
-                            <ul class="address-widget">
-                                <li>
-                                    <i class="flaticon-location"></i>
-                                    <div class="desc">Sekolah Tumbuh Kampus Terpadu, Jl. KH. Ali Maksum, Panggungharjo, Sewon, Bantul, D.I Yogyakarta</div>
+                <div class="order-1 lg:order-2">
+                    <span class="inline-block text-[#FA8E00] font-bold uppercase tracking-widest text-sm mb-3">
+                        Program Unggulan
+                    </span>
+
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-[#112958] mb-6">
+                        Short Course Kuliner
+                    </h2>
+
+                    <div class="text-gray-600 text-lg leading-relaxed space-y-5">
+                        <p class="italic text-[#FA8E00] font-semibold">
+                            Salam pencinta dan penikmat kuliner,
+                        </p>
+
+                        <p>
+                            Program ini dirancang untuk membekali peserta dengan keterampilan,
+                            kepercayaan diri, dan kecakapan hidup untuk terjun di dunia kuliner
+                            profesional maupun wirausaha.
+                        </p>
+
+                        <div class="bg-orange-50 border-l-4 border-[#FA8E00] p-6 rounded-xl">
+                            <h5 class="font-bold text-[#112958] mb-4">Kelas Tersedia</h5>
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-3">
+                                    <i class="fa-solid fa-utensils text-[#FA8E00]"></i>
+                                    <span><strong>Program Intensif</strong> (Remaja & Dewasa)</span>
                                 </li>
-                                <li>
-                                    <i class="flaticon-call"></i>
-                                    <div class="desc">
-                                        <a href="tel:(+62)82223243036">082223243036</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <i class="flaticon-email"></i>
-                                    <div class="desc">
-                                        <a href="mailto:hospitality.arts@sekolahtumbuh.sch.id">hospitality.arts@sekolahtumbuh.sch.id</a>
-                                        <a href="https://sekolahtumbuh.sch.id">www.sekolahtumbuh.sch.id</a>
-                                    </div>
+                                <li class="flex items-center gap-3">
+                                    <i class="fa-solid fa-child text-[#FA8E00]"></i>
+                                    <span><strong>Program Liburan</strong> (TK & SD)</span>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="container">
-                    <div class="row y-middle">
-                        <div class="col-lg-4 md-mb-20">
-                            <div class="footer-logo md-text-center">
-                                <a href="index.html"><img src="{{ asset('images/thas/white.png') }}" alt=""></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 md-mb-20">
-                            <div class="copyright text-center md-text-start">
-                                <p>&copy; 2024 Developed By <a href="https://sekolahtumbuh.sch.id">Sekolah Tumbuh</a></p>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 text-end md-text-start">
-                            <ul class="footer-social">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <!-- Footer End -->
 
-        <!-- start scrollUp  -->
-        <div id="scrollUp" class="orange-color">
-            <i class="fa fa-angle-up"></i>
-        </div>
-        <!-- End scrollUp  -->
-
-        <!-- Search Modal Start -->
-        <div class="modal fade search-modal" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
-            <button type="button" class="close" data-bs-dismiss="modal">
-              <span class="flaticon-cross"></span>
-            </button>
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="search-block clearfix">
-                        <form>
-                            <div class="form-group">
-                                <input class="form-control" placeholder="Search Here..." type="text">
-                            </div>
-                        </form>
-                    </div>
-                </div>
             </div>
         </div>
-        <!-- Search Modal End -->
+    </section>
 
-        <!-- modernizr js -->
-        <script src="{{ asset('js/modernizr-2.8.3.min.js') }}"></script>
+    <section class="py-24 bg-[#0f1e3a] relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('{{ asset('images/bg/pattern1.png') }}')]"></div>
 
-        <!-- jquery latest version -->
-        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <div class="container mx-auto px-4 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-6">
+                    Short Course Eksplorasi Seni
+                </h2>
 
-        <!-- Bootstrap v5.0.2 js -->
-        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+                <blockquote class="bg-white/10 p-8 rounded-2xl backdrop-blur border border-white/20">
+                    <p class="text-[#FA8E00] text-xl italic mb-4">
+                        “Setiap anak adalah artis. Masalahnya bagaimana agar tetap menjadi artis saat dewasa.”
+                    </p>
+                    <span class="text-white font-bold">— Pablo Picasso</span>
+                </blockquote>
 
-        <!-- Menu js -->
-        <script src="{{ asset('js/rsmenu-main.js') }}"></script>
+                <p class="text-gray-300 mt-8 text-lg">
+                    Pembelajaran seni 2D, 3D, fine arts, applied arts, dan seni kontemporer,
+                    disertai pameran karya.
+                </p>
+            </div>
 
-        <!-- op nav js -->
-        <script src="{{ asset('js/jquery.nav.js') }}"></script>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                @foreach($arts as $art)
+                <div class="group bg-white/5 p-6 rounded-2xl border border-white/10
+                            hover:bg-[#FA8E00] transition duration-300">
+                    <div class="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center mb-5
+                                text-[#FA8E00] group-hover:text-white transition">
+                        <i class="fa-solid {{ $art['icon'] }} text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">{{ $art['title'] }}</h3>
+                    <p class="text-gray-400 group-hover:text-white transition text-sm">
+                        {{ $art['desc'] }}
+                    </p>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
 
-        <!-- owl.carousel js -->
-        <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <section class="py-24 bg-gray-50">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="bg-[#112958] rounded-3xl p-10 md:p-14 text-center text-white relative overflow-hidden shadow-2xl">
+                <h3 class="text-2xl md:text-3xl font-extrabold mb-4 relative z-10">
+                    Tertarik Mendaftar?
+                </h3>
+                <p class="text-gray-300 mb-8 relative z-10">
+                    Hubungi admin kami untuk koordinasi program & jadwal.
+                </p>
 
-        <!-- Slick js -->
-        <script src="{{ asset('js/slick.min.js') }}"></script>
+                <a href="https://wa.me/6282223243036"
+                   class="inline-flex items-center gap-3 px-8 py-4
+                          bg-[#FA8E00] text-white font-bold rounded-full
+                          hover:bg-white hover:text-[#FA8E00]
+                          transition duration-300 relative z-10">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    Hubungi Admin
+                </a>
 
-        <!-- isotope.pkgd.min js -->
-        <script src="{{ asset('js/isotope.pkgd.min.js') }}"></script>
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+                <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-[#FA8E00]/30 rounded-full blur-2xl"></div>
+            </div>
+        </div>
+    </section>
 
-        <!-- imagesloaded.pkgd.min js -->
-        <script src="{{ asset('js/imagesloaded.pkgd.min.js') }}"></script>
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <h2 class="text-center text-3xl font-extrabold text-[#112958] mb-12">
+                Galeri Kegiatan
+            </h2>
 
-        <!-- wow js -->
-        <script src="{{ asset('js/wow.min.js') }}"></script>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                @foreach(['lkp1.png','lkp2.png','lkp3.png','lkp4.png'] as $i => $img)
+                <div class="group relative h-40 md:h-64 rounded-2xl overflow-hidden shadow-lg cursor-pointer">
+                    <img src="{{ asset('images/thas/'.$img) }}"
+                         class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/40 opacity-0
+                                group-hover:opacity-100 transition
+                                flex items-center justify-center">
+                        <span class="text-white font-bold border border-white
+                                     px-4 py-2 rounded-full text-sm">
+                            Kegiatan {{ $i + 1 }}
+                        </span>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
 
-        <!-- Skill bar js -->
-        <script src="{{ asset('js/skill.bars.jquery.js') }}"></script>
-
-        <script src="{{ asset('js/jquery.counterup.min.js') }}"></script>
-
-        <!-- counter top js -->
-        <script src="{{ asset('js/waypoints.min.js') }}"></script>
-
-        <!-- video js -->
-        <script src="{{ asset('js/jquery.mb.YTPlayer.min.js') }}"></script>
-
-        <!-- magnific popup js -->
-        <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
-
-        <!-- plugins js -->
-        <script src="{{ asset('js/plugins.js') }}"></script>
-
-        <!-- contact form js -->
-        <script src="{{ asset('js/contact.form.js') }}"></script>
-
-        <!-- app js -->
-        @if (app()->environment('production'))
-    @php
-        $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);
-    @endphp
-    <link rel="stylesheet" href="{{ asset('build/' . $manifest['resources/css/app.css']['file']) }}">
-    <script type="module" src="{{ asset('build/' . $manifest['resources/js/app.js']['file']) }}"></script>
-@else
-    @viteReactRefresh
-    @vite(['resources/js/app.js', 'resources/css/app.css'])
-@endif
-    </body>
-</html>
+@endsection

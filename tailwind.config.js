@@ -6,8 +6,14 @@ export default {
     "./resources/**/*.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'thas-orange': '#FA8E00',
+        'thas-grey': '#303030',
+        'thas-green': '#00A450',
+        'thas-blue': '#112958', // Warna biru tua dari CSS lama
+      }
+    },
   },
   plugins: [],
 }
-

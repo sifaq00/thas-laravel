@@ -8,7 +8,7 @@ class LandingPageController extends Controller
 {
     public function index()
     {
-        $articles = Article::latest()->take(6)->get();
+        $articles = Article::latest()->take(3)->get();
         return view('landing.index', compact('articles'));
     }
 }

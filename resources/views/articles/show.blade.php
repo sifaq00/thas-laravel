@@ -1,476 +1,237 @@
-<!DOCTYPE html>
-<html lang="zxx">
-	<head>
-		<!-- meta tag -->
-        <meta charset="utf-8">
-        <title>Tumbuh Hospitality & Arts School</title>
-        <meta name="description" content="">
-        <!-- responsive tag -->
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- favicon -->
-        <link rel="apple-touch-icon" href="{{ asset('images/apple-touch-icon.png') }}">
-        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/tumbuh/favicon-tumbuh.png') }}">
+@extends('layouts.app')
 
-        <!-- Bootstrap v5.0.2 css -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
+@section('title', $article->title . ' - Tumbuh Hospitality & Arts School')
 
-        <!-- font-awesome css -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome.min.css') }}">
+@section('content')
 
-        <!-- animate css -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/animate.css') }}">
+    <section class="pt-28 md:pt-44 pb-12 bg-white" x-data="{ showModal: false }">
+        <div class="container mx-auto px-4 lg:px-8">
 
-        <!-- owl.carousel css -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/owl.carousel.css') }}">
+            <div class="text-center mb-12 border-b border-gray-100 pb-4 lg:pb-8">
+                <nav class="flex justify-center items-center text-gray-500 text-xs md:text-sm font-medium space-x-2 mb-4">
+                    <a href="{{ route('landingpage') }}" class="hover:text-[#FA8E00] transition">Home</a>
+                    <span class="text-gray-300">/</span>
+                    <a href="{{ route('articles.index') }}" class="hover:text-[#FA8E00] transition">Artikel</a>
+                    <span class="text-gray-300">/</span>
+                    <span class="text-[#FA8E00] font-bold">Detail</span>
+                </nav>
 
-        <!-- slick css -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/slick.css') }}">
-
-        <!-- off canvas css -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/off-canvas.css') }}">
-
-        <!-- linea-font css -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('fonts/linea-fonts.css') }}">
-
-        <!-- flaticon css  -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('fonts/flaticon.css') }}">
-
-        <!-- magnific popup css -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/magnific-popup.css') }}">
-
-        <!-- Main Menu css -->
-        <link rel="stylesheet" href="{{ asset('css/rsmenu-main.css') }}">
-
-        <!-- spacing css -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/rs-spacing.css') }}">
-
-        <!-- For Vite generated assets -->
-        @if (app()->environment('production'))
-    @php
-        $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);
-    @endphp
-    <link rel="stylesheet" href="{{ asset('build/' . $manifest['resources/css/app.css']['file']) }}">
-    <script type="module" src="{{ asset('build/' . $manifest['resources/js/app.js']['file']) }}"></script>
-@else
-    @viteReactRefresh
-    @vite(['resources/js/app.js', 'resources/css/app.css'])
-@endif
-
-        <!-- responsive css -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}">
-
-
-    </head>
-	<!--Warna Web orange = #FA8E00 | Abu = #303030 | Hijau = #00A450-->
-    <body class="home-style5">
-
-        <!--Preloader area start here-->
-        <div id="loader" class="loader orange-color">
-            <div class="loader-container">
-                <div class='loader-icon'>
-                    <img src="{{ asset('images/thas/thas.png') }}" alt="">
-
-                </div>
+                <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#112958] leading-tight max-w-5xl mx-auto">
+                    {{ $article->title }}
+                </h1>
             </div>
-        </div>
-        <!--Preloader area End here-->
 
-        <!--Full width header Start-->
-        <div class="full-width-header header-style2">
-            <!--Header Start-->
-            <header id="rs-header" class="rs-header">
-                <!-- Topbar Area Start -->
-                <div class="topbar-area home8-topbar">
-                    <div class="container">
-                        <div class="row y-middle">
-                            <div class="col-md-6">
-                                <ul class="topbar-contact">
-                                    <li>
-                                        <i class="flaticon-email"></i>
-                                        <a href="mailto:hospitality.arts@sekolahtumbuh.sch.id">hospitality.arts@sekolahtumbuh.sch.id</a>
-                                    </li>
-                                    <li>
-                                        <i class="flaticon-phone"></i>
-                                        0822–2324-3036
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-md-6 text-end">
-                                <ul class="topbar-right">
-                                    <li class="login-register"></li>
-                                    <li class="btn-part">
-                                        <a class="apply-btn" href="https://wa.me/682223243036" target="_blank">Daftar Sekarang!</a>
-                                    </li>
-                                </ul>
-                            </div>
+            <div class="grid lg:grid-cols-3 gap-10">
+
+                <div class="lg:col-span-2">
+
+                    <div class="flex flex-wrap items-center text-sm text-gray-500 mb-6 gap-4 sm:gap-6">
+                        <span class="flex items-center">
+                            <i class="fa-regular fa-calendar text-[#FA8E00] mr-2"></i>
+                            {{ $article->created_at->timezone('Asia/Jakarta')->format('d M Y, H:i') }} WIB
+                        </span>
+                        <span class="flex items-center">
+                            <i class="fa-regular fa-user text-[#FA8E00] mr-2"></i>
+                            {{ $article->author ?? 'Admin' }}
+                        </span>
+                        @if($article->category)
+                        <span class="flex items-center px-3 py-1 bg-gray-100 rounded-full text-xs font-bold text-[#112958]">
+                            {{ $article->category->name }}
+                        </span>
+                        @endif
+                    </div>
+
+                    @if($article->image)
+                    <div class="rounded-2xl overflow-hidden shadow-lg mb-8">
+                        <img src="{{ asset('storage/' . $article->image) }}" alt="{{ $article->title }}" class="w-full h-auto object-cover">
+                    </div>
+                    @endif
+
+                    <div class="prose prose-lg prose-blue max-w-none text-gray-700 leading-relaxed text-justify">
+                        {!! $article->content !!}
+                    </div>
+
+                    <div class="mt-12 pt-8 border-t border-gray-100">
+                        <h5 class="font-bold text-[#112958] mb-4">Bagikan artikel ini:</h5>
+                        <div class="flex space-x-3">
+                            <a href="#" class="w-10 h-10 rounded-full bg-[#3b5998] text-white flex items-center justify-center hover:opacity-90 transition"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-[#1DA1F2] text-white flex items-center justify-center hover:opacity-90 transition"><i class="fa-brands fa-twitter"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center hover:opacity-90 transition"><i class="fa-brands fa-whatsapp"></i></a>
                         </div>
                     </div>
-                </div>
-                <!-- Topbar Area End -->
 
-                <!-- Menu Start -->
-                <div class="menu-area menu-sticky">
-                    <div class="container">
-                        <div class="row y-middle">
-                            <div class="col-lg-5">
-                                <div class="logo-cat-wrap">
-                                    <div class="logo-part pr-90">
-                                        <a class="dark-logo" href="{{ route('landingpage') }}">
-                                            <img src="{{ asset('images/thas/menu.png') }}" alt="">
-                                        </a>
-                                        <a class="light-logo" href="{{ route('landingpage') }}">
-                                            <img src="{{ asset('images/thas/white.png') }}" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-7 text-center">
-                                <div class="rs-menu-area">
-                                    <div class="main-menu pr-30">
-                                        <div class="mobile-menu">
-                                            <a class="rs-menu-toggle">
-                                                <i class="fa fa-bars"></i>
-                                            </a>
+                    <div class="mt-8">
+                        <a href="{{ route('articles.index') }}" class="inline-flex items-center text-[#112958] font-bold hover:text-[#FA8E00] transition">
+                            <i class="fa-solid fa-arrow-left mr-2"></i> Kembali ke Daftar Berita
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-1 space-y-8">
+
+                    <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                        <h4 class="text-lg font-bold text-[#112958] mb-4 border-b pb-2 border-gray-100 flex items-center">
+                            <i class="fa-solid fa-newspaper mr-2 text-[#FA8E00]"></i> Artikel Terbaru
+                        </h4>
+                        <ul class="space-y-4">
+                            @if(isset($recentArticles) && count($recentArticles) > 0)
+                                @foreach ($recentArticles as $latest)
+                                <li class="group">
+                                    <a href="{{ route('articles.show', $latest->id) }}" class="flex items-start gap-3 hover:bg-gray-50 p-2 rounded-lg transition duration-200 -mx-2">
+                                        <div class="w-16 h-16 flex-shrink-0 rounded-md overflow-hidden bg-gray-200">
+                                            @if($latest->image)
+                                            <img src="{{ asset('storage/' . $latest->image) }}" class="w-full h-full object-cover">
+                                            @else
+                                            <div class="w-full h-full flex items-center justify-center text-gray-400"><i class="fa-regular fa-image"></i></div>
+                                            @endif
                                         </div>
-                                        <nav class="rs-menu">
-                                           <ul class="nav-menu">
-                                              <li class="rs-mega-menu mega-rs"> <a href="landingpage{{ route('landingpage') }}">Home</a>
-                                              </li>
-                                               <li class="menu">
-                                                   <a href="{{ route('about') }}">About</a>
+                                        <div>
+                                            <h5 class="text-sm font-bold text-gray-700 group-hover:text-[#FA8E00] transition line-clamp-2 leading-snug">
+                                                {{ $latest->title }}
+                                            </h5>
+                                            <span class="text-[10px] text-gray-400 mt-1 block">{{ $latest->created_at->format('d M Y') }}</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                @endforeach
+                            @else
+                                <li class="text-sm text-gray-500 italic">Belum ada artikel terbaru.</li>
+                            @endif
+                        </ul>
+                    </div>
 
-                                               </li>
+                    <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+                        <h4 class="text-lg font-bold text-[#112958] mb-4 border-b pb-2 border-gray-100 flex items-center">
+                            <i class="fa-solid fa-list mr-2 text-[#FA8E00]"></i> Kategori
+                        </h4>
+                        <ul class="space-y-1">
+                            @if(isset($categories) && count($categories) > 0)
+                                @foreach($categories as $category)
+                                <li>
+                                    <a href="{{ route('articles.index', ['category' => $category->id]) }}" class="block px-3 py-2 rounded-lg text-sm text-gray-600 hover:text-[#FA8E00] hover:bg-gray-50 transition flex justify-between items-center group">
+                                        <span>{{ $category->name }}</span>
+                                        <i class="fa-solid fa-chevron-right text-xs text-gray-300 group-hover:text-[#FA8E00]"></i>
+                                    </a>
+                                </li>
+                                @endforeach
+                            @else
+                                <li class="text-sm text-gray-500 italic">Belum ada kategori.</li>
+                            @endif
+                        </ul>
+                    </div>
 
-                                               <li class="menu-item-has-children">
-                                                   <a href="#">Program</a>
-                                                   <ul class="sub-menu">
-                                                       <li><a href="{{ route('perhotelan') }}">Program Perhotelan</a> </li>
-                                                       <li><a href="{{ route('shortcourse') }}">Program Short Course</a> </li>
-                                                   </ul>
-                                               </li>
+                    <div class="bg-white p-6 rounded-2xl shadow-lg border-t-4 border-[#FA8E00]">
+                        <h4 class="text-lg font-bold text-[#112958] mb-4 border-b pb-2 border-gray-100">Informasi Pendaftaran</h4>
 
-                                               <li class="current-menu-item">
-                                                   <a href="#">Info & Berita</a>
-                                               </li>
-
-                                               <li class="menu">
-                                                   <a href="{{ route('contact') }}">Kontak</a>
-                                               </li>
-                                           </ul> <!-- //.nav-menu -->
-                                        </nav>
-                                    </div> <!-- //.main-menu -->
-                                </div>
+                        <div class="group relative rounded-xl overflow-hidden mb-4 cursor-pointer shadow border border-gray-100" @click="showModal = true">
+                            <img src="{{ asset('images/poster/pendaftaran-new.PNG') }}" class="w-full object-cover transition duration-500 group-hover:scale-105" alt="Poster Pendaftaran">
+                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                                <span class="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-bold border border-white/50 hover:bg-[#FA8E00] hover:border-[#FA8E00] transition">
+                                    <i class="fa-solid fa-magnifying-glass-plus mr-2"></i> Perbesar
+                                </span>
                             </div>
                         </div>
+
+                        <div class="text-center">
+                            <h5 class="font-bold text-[#112958] mb-3 text-sm">Pendaftaran Mahasiswa Baru</h5>
+                            <button @click="showModal = true" class="w-full py-2.5 bg-[#FA8E00] hover:bg-[#d67900] text-white rounded-lg font-bold text-sm transition shadow-md">
+                                Lihat Detail
+                            </button>
+                        </div>
                     </div>
+
                 </div>
-                <!-- Menu End -->
-            </header>
-            <!--Header End-->
-        </div>
-        <!--Full width header End-->
-
-
-
-
-        <!-- Detail Artikel Section -->
-        <div class="container my-5">
-            <div class="news-detail-header mb-4">
-                <!-- Jika ada kategori terpilih -->
-        @if($selectedCategory)
-        <div class="col-12 mb-4">
-            <h4 class="note-category">
-                Menampilkan artikel dalam kategori: <span class="title-category">{{ $selectedCategory->name }}</span>
-                <a href="{{ route('articles.index') }}" class="btn btn-filtercategory">Hapus Filter</a>
-            </h4>
-        </div>
-        @endif
-              <h1 class="fw-bold mb-2">{{ $article->title }}</h1>
-              <p class="text-muted small">{{ $article->created_at->format('d M Y : H.i') }} | oleh {{ $article->author }}</p>
             </div>
+        </div>
 
-            <div class="row">
-              <!-- Artikel Utama -->
-              <div class="col-lg-8">
-                <div class="news-detail-article">
-                  <img
-                    src="{{ asset('storage/' . $article->image) }}"
-                    class="news-detail-image mb-4 img-fluid rounded"
-                    alt="{{ $article->title }}"
-                  />
-                  <p class="news-detail-paragraph">
-                    {!! $article->content !!}
-                  </p>
-                </div>
-              </div>
+        <div x-show="showModal"
+             style="display: none;"
+             class="fixed inset-0 z-[9999] overflow-y-auto"
+             aria-labelledby="modal-title" role="dialog" aria-modal="true" x-cloak>
 
-              <!-- Sidebar -->
-              <div class="col-lg-4">
-                <div class="sidebar-container">
-                  <!-- Artikel Terbaru -->
-                  <div class="sidebar-box p-4 mb-4">
-                    <h4 class="fw-bold mb-3 border-bottom pb-2">Artikel Terbaru</h4>
-                    <ul class="list-group list-group-flush">
-                    @foreach ($recentArticles as $latest)
-                      <li class="list-group-item">
-                        <a href="{{ route('articles.show', $latest->id) }}" class="text-decoration-none">{{ $latest->title }}</a>
-                      </li>
-                    @endforeach
-                    </ul>
-                  </div>
+            <div x-show="showModal"
+                 x-transition:enter="ease-out duration-300"
+                 x-transition:enter-start="opacity-0"
+                 x-transition:enter-end="opacity-100"
+                 x-transition:leave="ease-in duration-200"
+                 x-transition:leave-start="opacity-100"
+                 x-transition:leave-end="opacity-0"
+                 class="fixed inset-0 bg-black/80 transition-opacity backdrop-blur-sm"
+                 @click="showModal = false"></div>
 
-                  <!-- Kategori -->
-                  <div class="sidebar-box p-4 mb-4">
-                    <h4 class="fw-bold mb-3 border-bottom pb-2">Kategori</h4>
-                    <ul class="list-group list-group-flush">
-                      @foreach($categories as $category)
-                      <li class="list-group-item">
-                        <a href="{{ route('articles.index', ['category' => $category->id]) }}" class="text-decoration-none">{{ $category->name }}</a>
-                      </li>
-                      @endforeach
-                    </ul>
+            <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+                <div x-show="showModal"
+                     x-transition:enter="ease-out duration-300"
+                     x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                     x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                     x-transition:leave="ease-in duration-200"
+                     x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+                     x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                     class="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-4xl"
+                     @click.stop>
 
-                  </div>
-
-
-                  <!-- Informasi Pendaftaran -->
-                <div class="sidebar-box p-4">
-                    <h4 class="fw-bold mb-3 border-bottom pb-2">Informasi Pendaftaran</h4>
-                    <div class="card info-card mb-3">
-                    <img
-                        src="{{ asset('images/poster/pendaftaran-new.PNG') }}"
-                        class="card-img-top"
-                        alt="Poster Pendaftaran"
-                    />
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Pendaftaran Mahasiswa Baru</h5>
-                        <button
-                        class="btn btn-infopendaftaran"
-                        data-bs-toggle="modal"
-                        data-bs-target="#detailModal"
-                        >
-                        Lihat Detail
+                    <div class="bg-white px-4 py-3 sm:px-6 flex justify-between items-center border-b border-gray-100">
+                        <h3 class="text-lg font-bold leading-6 text-[#112958]" id="modal-title">Informasi Pendaftaran</h3>
+                        <button @click="showModal = false" class="text-gray-400 hover:text-gray-600 transition w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100">
+                            <i class="fa-solid fa-xmark text-xl"></i>
                         </button>
                     </div>
-                    </div>
-                </div>
 
-                </div>
-              </div>
-            </div>
-                        <!-- Modal -->
-                        <div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="detailModalLabel">Informasi Pendaftaran</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="bg-gray-50 p-0 md:p-4">
+                        <div x-data="{
+                                activeSlide: 0,
+                                slides: [
+                                    '{{ asset('images/poster/pendaftaran-new.PNG') }}',
+                                    '{{ asset('images/poster/posterpendaftaran1.jpg') }}',
+                                    '{{ asset('images/poster/posterpendaftaran2.jpg') }}'
+                                ]
+                             }" class="relative w-full group">
+
+                            <div class="relative w-full aspect-[3/4] md:aspect-[4/3] overflow-hidden bg-gray-200 rounded-none md:rounded-lg">
+                                <template x-for="(slide, index) in slides" :key="index">
+                                    <div x-show="activeSlide === index"
+                                         x-transition:enter="transition transform duration-500 ease-in-out"
+                                         x-transition:enter-start="opacity-0 translate-x-10"
+                                         x-transition:enter-end="opacity-100 translate-x-0"
+                                         x-transition:leave="transition transform duration-500 ease-in-out"
+                                         x-transition:leave-start="opacity-100 translate-x-0"
+                                         x-transition:leave-end="opacity-0 -translate-x-10"
+                                         class="absolute inset-0 flex items-center justify-center">
+                                        <img :src="slide" class="max-w-full max-h-full object-contain" alt="Poster Pendaftaran">
                                     </div>
-                                    <div class="modal-body">
-                                        <!-- Carousel Gambar -->
-                                        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-                                            <div class="carousel-inner">
-                                                <div class="carousel-item active">
-                                                    <img src="{{ asset('images/poster/pendaftaran-new.PNG') }}" class="d-block w-100" alt="Poster Pendaftaran New">
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <img src="{{ asset('images/poster/posterpendaftaran1.jpg') }}" class="d-block w-100" alt="Poster Pendaftaran 1">
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <img src="{{ asset('images/poster/posterpendaftaran2.jpg') }}" class="d-block w-100" alt="Poster Pendaftaran 2">
-                                                </div>
-                                            </div>
-                                            <!-- Kontrol Carousel -->
-                                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                <span class="visually-hidden">Previous</span>
-                                            </button>
-                                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                <span class="visually-hidden">Next</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
+                                </template>
                             </div>
-                        </div>
-          </div>
 
+                            <button @click="activeSlide = activeSlide === 0 ? slides.length - 1 : activeSlide - 1"
+                                    class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-[#FA8E00] hover:text-white text-gray-800 w-10 h-10 rounded-full flex items-center justify-center transition shadow-lg opacity-0 group-hover:opacity-100 focus:outline-none">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
 
+                            <button @click="activeSlide = activeSlide === slides.length - 1 ? 0 : activeSlide + 1"
+                                    class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-[#FA8E00] hover:text-white text-gray-800 w-10 h-10 rounded-full flex items-center justify-center transition shadow-lg opacity-0 group-hover:opacity-100 focus:outline-none">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
 
-
-
-
-
-
-
-        <!-- Footer Start -->
-        <footer id="rs-footer" class="rs-footer style8">
-            <div class="footer-top">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-12 col-sm-12 footer-widget md-mb-50">
-                            <h4 class="widget-title">Program Studi</h4>
-                            <ul class="site-map">
-                                <li><a href="#">Program Perhotelan</a></li>
-                                <li><a href="#">Short Course</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-3 col-md-12 col-sm-12 footer-widget md-mb-50">
-                            <h4 class="widget-title">Short Course Program</h4>
-                            <ul class="site-map">
-                                <li><a href="#">Short Course Kuliner</a></li>
-                                <li><a href="#">Short Course Eksplorasi Seni</a></li>
-                                <li><a href="#">Paket Edukasi Cooking Class</a></li>
-                                <li><a href="#">Galeri Kegiatan</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-3 col-md-12 col-sm-12 footer-widget md-mb-50">
-                            <h4 class="widget-title">Kemitraan</h4>
-                            <ul class="site-map">
-                                <li><a href="#">Artotel Hotel</a></li>
-                                <li><a href="#">Grup Mesa</a></li>
-                                <li><a href="#">Grup Colours Street Food</a></li>
-                                <li><a href="#">Grup Casa</a></li>
-                                <li><a href="#">JNM Bloc</a></li>
-                                <li><a href="#">Grup Kopi Mlaku</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-3 col-md-12 col-sm-12 footer-widget">
-                            <h4 class="widget-title">Address</h4>
-                            <ul class="address-widget">
-                                <li>
-                                    <i class="flaticon-location"></i>
-                                    <div class="desc">Sekolah Tumbuh Kampus Terpadu, Jl. KH. Ali Maksum, Panggungharjo, Sewon, Bantul, D.I Yogyakarta</div>
-                                </li>
-                                <li>
-                                    <i class="flaticon-call"></i>
-                                    <div class="desc">
-                                        <a href="tel:(+62)82223243036">082223243036</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <i class="flaticon-email"></i>
-                                    <div class="desc">
-                                        <a href="mailto:hospitality.arts@sekolahtumbuh.sch.id">hospitality.arts@sekolahtumbuh.sch.id</a>
-                                        <a href="https://sekolahtumbuh.sch.id">www.sekolahtumbuh.sch.id</a>
-                                    </div>
-                                </li>
-                            </ul>
+                            <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
+                                <template x-for="(slide, index) in slides" :key="index">
+                                    <button @click="activeSlide = index"
+                                            class="w-2.5 h-2.5 rounded-full transition shadow-sm"
+                                            :class="activeSlide === index ? 'bg-[#FA8E00] scale-125' : 'bg-white/70 hover:bg-white'">
+                                    </button>
+                                </template>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="container">
-                    <div class="row y-middle">
-                        <div class="col-lg-4 md-mb-20">
-                            <div class="footer-logo md-text-center">
-                                <a href="index.html"><img src"{{ asset('images/thas/white.png') }}" alt=""></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 md-mb-20">
-                            <div class="copyright text-center md-text-start">
-                                <p>&copy; 2024 Developed By <a href="https://sekolahtumbuh.sch.id">Sekolah Tumbuh</a></p>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 text-end md-text-start">
-                            <ul class="footer-social">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- Footer End -->
 
-		<!-- start scrollUp  -->
-		<div id="scrollUp" class="orange-color">
-			<i class="fa fa-angle-up"></i>
-		</div>
-		<!-- End scrollUp  -->
-
-		<!-- Search Modal Start -->
-        <div class="modal fade search-modal" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
-            <button type="button" class="close" data-bs-dismiss="modal">
-              <span class="flaticon-cross"></span>
-            </button>
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="search-block clearfix">
-                        <form>
-                            <div class="form-group">
-                                <input class="form-control" placeholder="Search Here..." type="text">
-                            </div>
-                        </form>
+                    <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 border-t border-gray-100">
+                        <button type="button" @click="showModal = false" class="inline-flex w-full justify-center rounded-lg bg-white px-4 py-2 text-sm font-semibold text-gray-700 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto transition">
+                            Tutup
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
 
-		<script>
-			$(document).ready(function() {
-				$('.popup-videos').magnificPopup({
-					type: 'iframe'
-				});
-			});
-		</script>
+    </section>
 
-        <!-- Search Modal End -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-
-		<!-- modernizr js -->
-		<script src="{{ asset('js/modernizr-2.8.3.min.js') }}"></script>
-		<!-- jquery latest version -->
-		<script src="{{ asset('js/jquery.min.js') }}"></script>
-		<!-- Bootstrap v5.0.2 js -->
-		<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-		<!-- Menu js -->
-		<script src="{{ asset('js/rsmenu-main.js') }}"></script>
-		<!-- op nav js -->
-		<script src="{{ asset('js/jquery.nav.js') }}"></script>
-		<!-- owl.carousel js -->
-		<script src="{{ asset('js/owl.carousel.min.js') }}"></script>
-		<!-- Slick js -->
-		<script src="{{ asset('js/slick.min.js') }}"></script>
-		<!-- isotope.pkgd.min js -->
-		<script src="{{ asset('js/isotope.pkgd.min.js') }}"></script>
-		<!-- imagesloaded.pkgd.min js -->
-		<script src="{{ asset('js/imagesloaded.pkgd.min.js') }}"></script>
-		<!-- wow js -->
-		<script src="{{ asset('js/wow.min.js') }}"></script>
-		<!-- Skill bar js -->
-		<script src="{{ asset('/js/skill.bars.jquery.js') }}"></script>
-		<script src="assets/js/jquery.counterup.min.js"></script>
-		 <!-- counter top js -->
-		<script src="{{ asset('js/waypoints.min.js') }}"></script>
-		<!-- video js -->
-		<script src="{{ asset('js/jquery.mb.YTPlayer.min.js') }}"></script>
-		<!-- magnific popup js -->
-		<script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
-		<!-- plugins js -->
-		<script src="{{ asset('js/plugins.js') }}"></script>
-		<!-- contact form js -->
-		<script src="{{ asset('js/contact.form.js') }}"></script>
-		<!-- app js -->
-        @if (app()->environment('production'))
-    @php
-        $manifest = json_decode(file_get_contents(public_path('build/manifest.json')), true);
-    @endphp
-    <link rel="stylesheet" href="{{ asset('build/' . $manifest['resources/css/app.css']['file']) }}">
-    <script type="module" src="{{ asset('build/' . $manifest['resources/js/app.js']['file']) }}"></script>
-@else
-    @viteReactRefresh
-    @vite(['resources/js/app.js', 'resources/css/app.css'])
-@endif
-
-    </body>
-</html>
-
-
-
+@endsection
