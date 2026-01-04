@@ -66,7 +66,7 @@
                             <div class="relative h-48 overflow-hidden bg-gray-100">
                                 <a href="{{ route('articles.show', $article->id) }}" class="block w-full h-full">
                                     <img
-                                        src="https://res.cloudinary.com/{{ config('cloudinary.cloud_name') }}/image/upload/{{ $article->image }}"
+                                        src="{{ $article->image_url }}"
                                         alt="{{ $article->title }}"
                                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                     />
