@@ -65,11 +65,12 @@
 
                             <div class="relative h-48 overflow-hidden bg-gray-100">
                                 <a href="{{ route('articles.show', $article->id) }}" class="block w-full h-full">
-                                    @if(Str::startsWith($article->image, ['http://', 'https://']))
-                                        <img src="{{ $article->image }}" alt="{{ $article->title }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                                    @else
-                                        <img src="{{ asset('storage/' . $article->image) }}" alt="{{ $article->title }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                                    @endif
+                                    <img
+                                        src="https://res.cloudinary.com/{{ config('cloudinary.cloud_name') }}/image/upload/{{ $article->image }}"
+                                        alt="{{ $article->title }}"
+                                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                    />
+
                                 </a>
                                 <div class="absolute top-3 left-3 bg-[#FA8E00] text-white text-[10px] font-bold px-3 py-1 rounded shadow">
                                     {{ $article->created_at->format('d M Y') }}
