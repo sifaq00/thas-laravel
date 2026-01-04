@@ -43,6 +43,10 @@ return [
             'visibility' => 'public',
 
         ],
+        'cloudinary' => [
+            'driver' => 'cloudinary',
+        ],
+
 
         's3' => [
             'driver' => 's3',
