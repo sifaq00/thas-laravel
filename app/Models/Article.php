@@ -19,4 +19,15 @@ class Article extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function getImageUrlAttribute()
+    {
+        if (!$this->image) return null;
+
+        return 'https://res.cloudinary.com/' .
+            config('cloudinary.cloud_name') .
+            '/image/upload/' .
+            $this->image;
+    }
+
 }
