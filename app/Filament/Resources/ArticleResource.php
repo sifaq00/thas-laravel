@@ -35,7 +35,7 @@ class ArticleResource extends Resource
                     // ✅ CLOUDINARY FILE UPLOAD
                     Forms\Components\FileUpload::make('image')
                         ->label('Image')
-                        ->maxSize(5120)
+                        ->maxSize(10240)
                         ->disk('cloudinary')
                         ->directory('articles')
                         ->image()
